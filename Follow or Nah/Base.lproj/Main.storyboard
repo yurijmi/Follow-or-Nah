@@ -28,7 +28,7 @@
                                 <rect key="frame" x="20" y="126" width="560" height="106"/>
                                 <attributedString key="attributedText">
                                     <fragment>
-                                        <string key="content">This is a small test app for Twitter APIs. Here you can connect your Twitter accounts and see whom you follow! You can unfollow them or just ignore it. To begin using this app you need a Twitter account. If you have one, press the big shinny button below!</string>
+                                        <string key="content">This is a small test app for Twitter APIs. Here you can connect your Twitter accounts and see who you follow! You can unfollow them or just ignore it. To begin using this app you need a Twitter account. If you have one, press the big shinny button below!</string>
                                         <attributes>
                                             <font key="NSFont" size="15" name="HelveticaNeue"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
