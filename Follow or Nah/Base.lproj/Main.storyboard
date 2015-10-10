@@ -163,11 +163,17 @@
                                 <rect key="frame" x="20" y="396" width="280" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Unfollow, BRUH"/>
+                                <connections>
+                                    <action selector="unfollowTapped:" destination="9Mj-WS-MqN" eventType="touchUpInside" id="iQq-Ti-k97"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xMy-HF-aKc">
                                 <rect key="frame" x="301" y="396" width="279" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Follow, BRUH"/>
+                                <connections>
+                                    <action selector="followTapped:" destination="9Mj-WS-MqN" eventType="touchUpInside" id="tfT-3B-CYd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -195,6 +201,13 @@
                             <constraint firstItem="lIw-9R-znA" firstAttribute="leading" secondItem="7da-xy-bFD" secondAttribute="leading" constant="10" id="zy7-F6-GYn"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="followersLabel" destination="m95-vc-dsp" id="aZu-6x-aBq"/>
+                        <outlet property="followsYouLabel" destination="spA-aK-Hv9" id="ggS-NW-ZLd"/>
+                        <outlet property="headingLabel" destination="lIw-9R-znA" id="KS8-rc-EBg"/>
+                        <outlet property="imageView" destination="eN9-7i-NWm" id="asK-i4-20w"/>
+                        <outlet property="usernameLabel" destination="xJf-sw-T9I" id="fWE-7L-VbO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hug-AS-DMj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
