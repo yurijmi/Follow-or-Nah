@@ -21,14 +21,36 @@ class ViewController: UIViewController {
                 let allAccounts = account.accountsWithAccountType(accountType)
                 
                 if allAccounts.count <= 0 {
-                    print("No Twitter accounts found")
+                    let settingsAction = UIAlertAction(title: "Add account", style: .Default) { (_) -> Void in
+                        let settingsUrl = NSURL(string: UIApplicationOpenSettingsURLString)
+                        
+                        if let url = settingsUrl {
+                            UIApplication.sharedApplication().openURL(url)
+                        }
+                    }
+                    
+                    let alert = UIAlertController(title: "No Twitter accounts found", message: "It seems that you don't have any Twitter accounts connected to your iPhone. Go to Twitter Settings and add your account there.", preferredStyle: UIAlertControllerStyle.Alert)
+                        alert.addAction(settingsAction)
+                    
+                    self.presentViewController(alert, animated: true, completion: nil)
                 } else if allAccounts.count == 1 {
                     print("Twitter account found")
                 } else {
                     print("Multiple Twitter accounts found")
                 }
             } else {
-                print("Access wasn't granted")
+                let settingsAction = UIAlertAction(title: "Go to Settings", style: .Default) { (_) -> Void in
+                    let settingsUrl = NSURL(string: UIApplicationOpenSettingsURLString)
+                    
+                    if let url = settingsUrl {
+                        UIApplication.sharedApplication().openURL(url)
+                    }
+                }
+                
+                let alert = UIAlertController(title: "Access to Twitter is blocked", message: "It seems that you disabled access to Twitter. Go to Twitter Settings and enable access for \"Follow or Nah\".", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(settingsAction)
+                
+                self.presentViewController(alert, animated: true, completion: nil)
             }
         }
     
