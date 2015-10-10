@@ -20,6 +20,10 @@ class WelcomeViewController: UIViewController {
         }
     }
     
+    func useAccount(account: ACAccount) {
+        print("Using account @\(account.username)")
+    }
+    
     @IBAction func loginWithTwitter(button: AnyObject) {
         let account = ACAccountStore()
         let accountType = account.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierTwitter)
@@ -45,7 +49,6 @@ class WelcomeViewController: UIViewController {
                 self.presentViewController(alert, animated: true, completion: nil)
             }
         }
-    
     }
 
 }
