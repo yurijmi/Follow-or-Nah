@@ -17,8 +17,8 @@ class TwitterApi {
         self.account = account
     }
     
-    func performQuery(url: String, requestMethod: SLRequestMethod = SLRequestMethod.GET, parameters: [NSObject : AnyObject]? = nil, handler: SLRequestHandler!) {
-        let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: requestMethod, URL: NSURL(string: url), parameters: parameters)
+    func performQuery(path: String, requestMethod: SLRequestMethod = SLRequestMethod.GET, parameters: [NSObject : AnyObject]? = nil, handler: SLRequestHandler!) {
+        let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: requestMethod, URL: NSURL(string: "https://api.twitter.com/1.1/\(path).json"), parameters: parameters)
             request.account = self.account
         
         request.performRequestWithHandler(handler)

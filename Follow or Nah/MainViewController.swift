@@ -31,7 +31,7 @@ class MainViewController: UIViewController {
     }
     
     func getFollowersCount() {
-        self.twitterApi!.performQuery("https://api.twitter.com/1.1/account/verify_credentials.json", parameters: ["include_entities": "false", "skip_status": "true", "include_email": "false"],
+        self.twitterApi!.performQuery("account/verify_credentials", parameters: ["include_entities": "false", "skip_status": "true", "include_email": "false"],
             handler: { (data :NSData!, response :NSHTTPURLResponse!, error :NSError!) -> Void in
             if error == nil {
                 do {
