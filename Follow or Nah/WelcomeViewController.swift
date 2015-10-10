@@ -21,9 +21,9 @@ class WelcomeViewController: UIViewController {
     }
     
     func useAccount(account: ACAccount) {
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        dispatch_async(dispatch_get_main_queue()) {
             self.performSegueWithIdentifier("mainViewSegue", sender: account)
-        })
+        }
     }
     
     @IBAction func loginWithTwitter(button: AnyObject) {
@@ -42,9 +42,9 @@ class WelcomeViewController: UIViewController {
                 } else if allAccounts.count == 1 {
                     self.useAccount(allAccounts.first as! ACAccount)
                 } else {
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    dispatch_async(dispatch_get_main_queue()) {
                         self.performSegueWithIdentifier("selectAccountSegue", sender: allAccounts)
-                    })
+                    }
                 }
             } else {
                 let alert = UIAlertController(title: "Access to Twitter is blocked", message: "It seems that you disabled access to Twitter. Go to Twitter Settings and enable access for \"Follow or Nah\".", preferredStyle: .Alert)
