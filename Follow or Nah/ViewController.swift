@@ -7,17 +7,31 @@
 //
 
 import UIKit
+import Accounts
+import Social
 
 class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-    }
     
     @IBAction func loginWithTwitter(button: AnyObject) {
+        let account = ACAccountStore()
+        let accountType = account.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierTwitter)
         
+        account.requestAccessToAccountsWithType(accountType, options: nil) { (granted: Bool, error: NSError!) -> Void in
+            if granted {
+                let allAccounts = account.accountsWithAccountType(accountType)
+                
+                if allAccounts.count <= 0 {
+                    print("No Twitter accounts found")
+                } else if allAccounts.count == 1 {
+                    print("Twitter account found")
+                } else {
+                    print("Multiple Twitter accounts found")
+                }
+            } else {
+                print("Access wasn't granted")
+            }
+        }
+    
     }
 
 }
