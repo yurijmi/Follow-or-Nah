@@ -21,7 +21,9 @@ class WelcomeViewController: UIViewController {
     }
     
     func useAccount(account: ACAccount) {
-        print("Using account @\(account.username)")
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.performSegueWithIdentifier("mainViewSegue", sender: account)
+        })
     }
     
     @IBAction func loginWithTwitter(button: AnyObject) {

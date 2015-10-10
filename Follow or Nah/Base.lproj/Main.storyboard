@@ -64,6 +64,7 @@
                     <navigationItem key="navigationItem" title="Follow! or nah..." id="rIM-x6-SvI"/>
                     <connections>
                         <segue destination="Ava-lV-riH" kind="presentation" identifier="selectAccountSegue" id="FlU-6f-FLK"/>
+                        <segue destination="9Mj-WS-MqN" kind="show" identifier="mainViewSegue" id="jn9-Dd-MyR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -113,7 +114,91 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6gH-7d-ltP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2052" y="439"/>
+            <point key="canvasLocation" x="1377" y="1177"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="0aT-HW-Aqg">
+            <objects>
+                <viewController id="9Mj-WS-MqN" customClass="MainViewController" customModule="Follow_or_Nah" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Wt6-EP-gOF"/>
+                        <viewControllerLayoutGuide type="bottom" id="KxK-rB-AOe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7da-xy-bFD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You follow 0 peeps and this dude" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIw-9R-znA">
+                                <rect key="frame" x="10" y="74" width="580" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@johndough" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="xJf-sw-T9I">
+                                <rect key="frame" x="10" y="108" width="580" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eN9-7i-NWm">
+                                <rect key="frame" x="215" y="154" width="170" height="170"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="170" id="KrD-JY-Ezv"/>
+                                    <constraint firstAttribute="width" constant="170" id="vJP-6S-aMG"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 followers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m95-vc-dsp">
+                                <rect key="frame" x="10" y="334" width="580" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not following you. What a jerk!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="spA-aK-Hv9">
+                                <rect key="frame" x="10" y="365" width="580" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Fv-8F-5Ag">
+                                <rect key="frame" x="20" y="396" width="280" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Unfollow, BRUH"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xMy-HF-aKc">
+                                <rect key="frame" x="301" y="396" width="279" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Follow, BRUH"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="spA-aK-Hv9" secondAttribute="trailing" constant="-10" id="2OP-UU-Ak3"/>
+                            <constraint firstItem="eN9-7i-NWm" firstAttribute="centerX" secondItem="xJf-sw-T9I" secondAttribute="centerX" id="2UQ-FE-8oD"/>
+                            <constraint firstItem="m95-vc-dsp" firstAttribute="top" secondItem="eN9-7i-NWm" secondAttribute="bottom" constant="10" id="3WW-S5-ZLV"/>
+                            <constraint firstItem="xJf-sw-T9I" firstAttribute="leading" secondItem="7da-xy-bFD" secondAttribute="leadingMargin" constant="-10" id="462-UE-x7J"/>
+                            <constraint firstItem="spA-aK-Hv9" firstAttribute="leading" secondItem="7da-xy-bFD" secondAttribute="leadingMargin" constant="-10" id="Btp-8i-1fK"/>
+                            <constraint firstItem="xJf-sw-T9I" firstAttribute="top" secondItem="lIw-9R-znA" secondAttribute="bottom" constant="10" id="Fln-Mp-ciX"/>
+                            <constraint firstItem="xMy-HF-aKc" firstAttribute="trailing" secondItem="7da-xy-bFD" secondAttribute="trailingMargin" id="HKs-bm-RpS"/>
+                            <constraint firstItem="eN9-7i-NWm" firstAttribute="top" secondItem="xJf-sw-T9I" secondAttribute="bottom" constant="10" id="KAC-Uo-Pyv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xJf-sw-T9I" secondAttribute="trailing" constant="-10" id="Pbz-bn-EYb"/>
+                            <constraint firstItem="xMy-HF-aKc" firstAttribute="top" secondItem="spA-aK-Hv9" secondAttribute="bottom" constant="10" id="Sr7-Fy-Bdo"/>
+                            <constraint firstItem="9Fv-8F-5Ag" firstAttribute="leading" secondItem="7da-xy-bFD" secondAttribute="leadingMargin" id="UbY-PT-2Sl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="m95-vc-dsp" secondAttribute="trailing" constant="-10" id="VQk-uI-WUo"/>
+                            <constraint firstItem="9Fv-8F-5Ag" firstAttribute="top" secondItem="spA-aK-Hv9" secondAttribute="bottom" constant="10" id="dVY-xW-kYn"/>
+                            <constraint firstItem="9Fv-8F-5Ag" firstAttribute="height" secondItem="xMy-HF-aKc" secondAttribute="height" id="ez3-1M-qni"/>
+                            <constraint firstItem="spA-aK-Hv9" firstAttribute="top" secondItem="m95-vc-dsp" secondAttribute="bottom" constant="10" id="skF-lZ-qy2"/>
+                            <constraint firstItem="lIw-9R-znA" firstAttribute="top" secondItem="Wt6-EP-gOF" secondAttribute="bottom" constant="10" id="u0c-TT-zl3"/>
+                            <constraint firstAttribute="trailing" secondItem="lIw-9R-znA" secondAttribute="trailing" constant="10" id="vlW-Eu-1UY"/>
+                            <constraint firstItem="xMy-HF-aKc" firstAttribute="leading" secondItem="9Fv-8F-5Ag" secondAttribute="trailing" constant="1" id="wbN-Tg-yk1"/>
+                            <constraint firstItem="m95-vc-dsp" firstAttribute="leading" secondItem="7da-xy-bFD" secondAttribute="leadingMargin" constant="-10" id="xKd-7v-Lg6"/>
+                            <constraint firstItem="9Fv-8F-5Ag" firstAttribute="width" secondItem="xMy-HF-aKc" secondAttribute="width" id="zB7-Qw-Gqk"/>
+                            <constraint firstItem="lIw-9R-znA" firstAttribute="leading" secondItem="7da-xy-bFD" secondAttribute="leading" constant="10" id="zy7-F6-GYn"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hug-AS-DMj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2085" y="439"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="k1a-xI-cVz">
