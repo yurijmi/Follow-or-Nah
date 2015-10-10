@@ -38,9 +38,11 @@ class WelcomeViewController: UIViewController {
                     
                     self.presentViewController(alert, animated: true, completion: nil)
                 } else if allAccounts.count == 1 {
-                    print("Twitter account found")
+                    self.useAccount(allAccounts.first as! ACAccount)
                 } else {
-                    print("Multiple Twitter accounts found")
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.performSegueWithIdentifier("selectAccountSegue", sender: allAccounts)
+                    })
                 }
             } else {
                 let alert = UIAlertController(title: "Access to Twitter is blocked", message: "It seems that you disabled access to Twitter. Go to Twitter Settings and enable access for \"Follow or Nah\".", preferredStyle: .Alert)
@@ -48,6 +50,13 @@ class WelcomeViewController: UIViewController {
                 
                 self.presentViewController(alert, animated: true, completion: nil)
             }
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "selectAccountSegue" {
+            let selectAccountVC = segue.destinationViewController as! SelectAccountViewController
+                selectAccountVC.accounts = sender as! [ACAccount]
         }
     }
 
