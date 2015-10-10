@@ -60,6 +60,10 @@ class WelcomeViewController: UIViewController {
             let selectAccountVC = segue.destinationViewController as! SelectAccountViewController
                 selectAccountVC.accounts = sender as! [ACAccount]
         }
+        if segue.identifier == "mainViewSegue" {
+            let mainVC = segue.destinationViewController as! MainViewController
+                mainVC.account = (sender as! ACAccount)
+        }
     }
 
 }

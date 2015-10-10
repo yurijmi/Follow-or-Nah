@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Accounts
+import Social
 
 class MainViewController: UIViewController {
     
@@ -15,6 +17,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var imageView       : UIImageView!
     @IBOutlet weak var followersLabel  : UILabel!
     @IBOutlet weak var followsYouLabel : UILabel!
+    
+    var account : ACAccount?
 
     override func viewDidLoad() {
         super.viewDidLoad()
