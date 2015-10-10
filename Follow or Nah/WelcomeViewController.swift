@@ -10,7 +10,7 @@ import UIKit
 import Accounts
 import Social
 
-class ViewController: UIViewController {
+class WelcomeViewController: UIViewController {
     
     func openAppSettings(alert: UIAlertAction!) {
         let settingsUrl = NSURL(string: UIApplicationOpenSettingsURLString)
