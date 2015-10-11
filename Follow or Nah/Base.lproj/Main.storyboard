@@ -116,10 +116,10 @@
             </objects>
             <point key="canvasLocation" x="1377" y="1177"/>
         </scene>
-        <!--View Controller-->
+        <!--End Credits View Controller-->
         <scene sceneID="nb5-Sn-nuu">
             <objects>
-                <viewController id="OFP-2q-zwY" sceneMemberID="viewController">
+                <viewController id="OFP-2q-zwY" customClass="EndCreditsViewController" customModule="Follow_or_Nah" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xCb-ad-0RU"/>
                         <viewControllerLayoutGuide type="bottom" id="GhA-ky-f29"/>
@@ -172,16 +172,25 @@
                                 <rect key="frame" x="20" y="251" width="560" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Follow @yurijmi on Twitter"/>
+                                <connections>
+                                    <action selector="followTapped:" destination="OFP-2q-zwY" eventType="touchUpInside" id="Sh0-md-4Ie"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wvt-3g-xKY">
                                 <rect key="frame" x="20" y="297" width="560" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Star @yurijmi's repository on GitHub"/>
+                                <connections>
+                                    <action selector="starTapped:" destination="OFP-2q-zwY" eventType="touchUpInside" id="3Xr-3h-uNh"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbG-gs-sx4">
                                 <rect key="frame" x="20" y="340" width="560" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Buy Nick's iOS 9 course"/>
+                                <connections>
+                                    <action selector="buyTapped:" destination="OFP-2q-zwY" eventType="touchUpInside" id="KOf-wm-1Mu"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -206,6 +215,10 @@
                             <constraint firstAttribute="trailing" secondItem="wvt-3g-xKY" secondAttribute="trailing" constant="20" id="xAp-Cz-71H"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="buyButton" destination="cbG-gs-sx4" id="38f-L7-gCi"/>
+                        <outlet property="textView" destination="xjT-Ld-ve0" id="9dg-dY-7Ax"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8G6-Ib-O5K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
