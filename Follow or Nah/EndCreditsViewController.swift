@@ -16,7 +16,20 @@ class EndCreditsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let currentMonth = NSCalendar.currentCalendar().components(NSCalendarUnit.Month, fromDate: NSDate()).month
         
+        if 5...7 ~= currentMonth {
+            self.textView.text          = replaceNickWithRick(self.textView.text!)
+            // Text's style seems to be broken after changing content. Workaround
+            self.textView.font          = UIFont(name: "Helvetica Neue", size: 17)
+            self.textView.textAlignment = NSTextAlignment.Center
+            
+            self.buyButton.setTitle(replaceNickWithRick(self.buyButton.titleLabel!.text!), forState: .Normal)
+        }
+    }
+    
+    func replaceNickWithRick(string: String) -> String {
+        return string.stringByReplacingOccurrencesOfString("Nick", withString: "Rick", options: NSStringCompareOptions.LiteralSearch, range: nil)
     }
     
     @IBAction func followTapped(button: UIButton) {
