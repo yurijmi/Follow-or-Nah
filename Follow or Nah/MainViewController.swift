@@ -143,6 +143,19 @@ class MainViewController: UIViewController {
         }
     }
     
+    func presentToast(title: String, message: String, delay: Double = 1.0) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+        let delay = delay * Double(NSEC_PER_SEC)
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        
+        dispatch_after(time, dispatch_get_main_queue()) {
+            alert.dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
+    
     @IBAction func unfollowTapped(button: UIButton) {
         
     }
