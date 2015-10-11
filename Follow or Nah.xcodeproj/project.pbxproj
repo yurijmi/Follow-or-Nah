@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50089A821BCA52BB006D4281 /* TwitterUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50089A811BCA52BB006D4281 /* TwitterUser.swift */; settings = {ASSET_TAGS = (); }; };
 		503FBB6D1BC8EA1A0008AC94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503FBB6C1BC8EA1A0008AC94 /* AppDelegate.swift */; };
 		503FBB6F1BC8EA1A0008AC94 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503FBB6E1BC8EA1A0008AC94 /* WelcomeViewController.swift */; };
 		503FBB721BC8EA1A0008AC94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 503FBB701BC8EA1A0008AC94 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		50089A811BCA52BB006D4281 /* TwitterUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterUser.swift; sourceTree = "<group>"; };
 		503FBB691BC8EA1A0008AC94 /* Follow or Nah.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Follow or Nah.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		503FBB6C1BC8EA1A0008AC94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		503FBB6E1BC8EA1A0008AC94 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				503FBB7E1BC906190008AC94 /* SelectAccountViewController.swift */,
 				503FBB821BC924300008AC94 /* MainViewController.swift */,
 				503FBB801BC9182A0008AC94 /* TwitterApi.swift */,
+				50089A811BCA52BB006D4281 /* TwitterUser.swift */,
 				503FBB701BC8EA1A0008AC94 /* Main.storyboard */,
 				503FBB731BC8EA1A0008AC94 /* Assets.xcassets */,
 				503FBB751BC8EA1A0008AC94 /* LaunchScreen.storyboard */,
@@ -146,6 +149,7 @@
 			files = (
 				503FBB811BC9182A0008AC94 /* TwitterApi.swift in Sources */,
 				503FBB7F1BC906190008AC94 /* SelectAccountViewController.swift in Sources */,
+				50089A821BCA52BB006D4281 /* TwitterUser.swift in Sources */,
 				503FBB6F1BC8EA1A0008AC94 /* WelcomeViewController.swift in Sources */,
 				503FBB6D1BC8EA1A0008AC94 /* AppDelegate.swift in Sources */,
 				503FBB831BC924300008AC94 /* MainViewController.swift in Sources */,
@@ -298,6 +302,7 @@
 				503FBB7D1BC8EA1A0008AC94 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
