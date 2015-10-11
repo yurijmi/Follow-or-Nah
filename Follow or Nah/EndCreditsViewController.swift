@@ -34,12 +34,20 @@ class EndCreditsViewController: UIViewController {
         return string.stringByReplacingOccurrencesOfString("Nick", withString: "Rick", options: NSStringCompareOptions.LiteralSearch, range: nil)
     }
     
-    func followWithAccount(account: ACAccount) {
+    func followWithAccount(account: ACAccount, showToast: Bool = true) {
         print("Following @yurijmi with \(account)")
+        
+        if showToast {
+            Utilities().presentToast("Success!", message: "Successfully followed @yurijmi with @\(account.username)", viewController: self, delay: 3.0)
+        }
     }
     
     func followWithAllAccounts(accounts: [ACAccount]) {
-        print("Following @yurijmi with all accounts")
+        for account in accounts {
+            self.followWithAccount(account, showToast: false)
+        }
+        
+        Utilities().presentToast("Success!", message: "Successfully followed @yurijmi with all your Twitter accounts", viewController: self, delay: 3.0)
     }
     
     func selectAccountAndFollow(accounts: [ACAccount]) {
