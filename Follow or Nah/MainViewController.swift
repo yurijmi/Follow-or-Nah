@@ -85,28 +85,32 @@ class MainViewController: UIViewController {
                     }
                     
                     dispatch_async(dispatch_get_main_queue()) {
-                        self.showTopUser()
+                        self.showNextUser()
                     }
                 } catch {}
             }
         })
     }
     
-    func showTopUser() {
-        let user = self.twitterUsers.first!
-        
-        self.usernameLabel.text = user.name
-        self.followersLabel.text = "\(user.followers) followers"
-        
-        self.checkFriendship()
-        
-        NSURLSession.sharedSession().dataTaskWithURL(user.imageURL) { (data: NSData?, res: NSURLResponse?, error: NSError?) -> Void in
-            dispatch_async(dispatch_get_main_queue()) {
-                let image = UIImage(data: data!)
-                
-                self.imageView.image = image
-            }
-        }.resume()
+    func showNextUser() {
+        if self.twitterUsers.count > 0 {
+            let user = self.twitterUsers.first!
+            
+            self.usernameLabel.text = user.name
+            self.followersLabel.text = "\(user.followers) followers"
+            
+            self.checkFriendship()
+            
+            NSURLSession.sharedSession().dataTaskWithURL(user.imageURL) { (data: NSData?, res: NSURLResponse?, error: NSError?) -> Void in
+                dispatch_async(dispatch_get_main_queue()) {
+                    let image = UIImage(data: data!)
+                    
+                    self.imageView.image = image
+                }
+                }.resume()
+        } else {
+            self.performSegueWithIdentifier("endCreditsSegue", sender: nil)
+        }
     }
     
     func checkFriendship() {
@@ -152,7 +156,7 @@ class MainViewController: UIViewController {
                         
                         self.twitterUsers.removeAtIndex(0)
                         
-                        self.showTopUser()
+                        self.showNextUser()
                     }
                 } else {
                     dispatch_async(dispatch_get_main_queue()) {
@@ -165,7 +169,7 @@ class MainViewController: UIViewController {
     @IBAction func followTapped(button: UIButton) {
         self.twitterUsers.removeAtIndex(0)
         
-        showTopUser()
+        showNextUser()
     }
 
 }

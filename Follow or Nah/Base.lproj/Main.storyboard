@@ -295,7 +295,7 @@
                         <outlet property="headingLabel" destination="lIw-9R-znA" id="KS8-rc-EBg"/>
                         <outlet property="imageView" destination="eN9-7i-NWm" id="asK-i4-20w"/>
                         <outlet property="usernameLabel" destination="xJf-sw-T9I" id="fWE-7L-VbO"/>
-                        <segue destination="OFP-2q-zwY" kind="showDetail" identifier="noUsersSegue" id="51T-ZG-ZJH"/>
+                        <segue destination="OFP-2q-zwY" kind="showDetail" identifier="endCreditsSegue" id="51T-ZG-ZJH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hug-AS-DMj" userLabel="First Responder" sceneMemberID="firstResponder"/>
