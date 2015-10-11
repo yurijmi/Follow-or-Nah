@@ -113,7 +113,8 @@ class MainViewController: UIViewController {
                 }
                 }.resume()
         } else {
-            self.performSegueWithIdentifier("endCreditsSegue", sender: nil)
+            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("EndCreditsViewController") as! EndCreditsViewController
+            self.presentViewController(vc, animated: true, completion: nil)
         }
     }
     

@@ -119,7 +119,7 @@
         <!--End Credits View Controller-->
         <scene sceneID="nb5-Sn-nuu">
             <objects>
-                <viewController id="OFP-2q-zwY" customClass="EndCreditsViewController" customModule="Follow_or_Nah" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EndCreditsViewController" id="OFP-2q-zwY" customClass="EndCreditsViewController" customModule="Follow_or_Nah" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xCb-ad-0RU"/>
                         <viewControllerLayoutGuide type="bottom" id="GhA-ky-f29"/>
@@ -295,7 +295,6 @@
                         <outlet property="headingLabel" destination="lIw-9R-znA" id="KS8-rc-EBg"/>
                         <outlet property="imageView" destination="eN9-7i-NWm" id="asK-i4-20w"/>
                         <outlet property="usernameLabel" destination="xJf-sw-T9I" id="fWE-7L-VbO"/>
-                        <segue destination="OFP-2q-zwY" kind="showDetail" identifier="endCreditsSegue" id="51T-ZG-ZJH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hug-AS-DMj" userLabel="First Responder" sceneMemberID="firstResponder"/>
