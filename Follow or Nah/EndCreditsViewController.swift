@@ -38,8 +38,20 @@ class EndCreditsViewController: UIViewController {
         print("Following @yurijmi with \(account)")
     }
     
+    func followWithAllAccounts(actionSheet: UIAlertAction!) {
+        print("Following @yurijmi with all accounts")
+    }
+    
     func selectAccountAndFollow(accounts: [ACAccount]) {
-        print("Multiple accounts: \(accounts)")
+        let actionSheet = UIAlertController(title: "Select Twitter account", message: "You have multiple Twitter accounts connected to your iPhone. Please select account with which you want to follow @yurijmi.", preferredStyle: .ActionSheet)
+            actionSheet.addAction(UIAlertAction(title: "All of them!", style: UIAlertActionStyle.Default, handler: self.followWithAllAccounts))
+            actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
+        
+        for account in accounts {
+            actionSheet.addAction(UIAlertAction(title: "@\(account.username)", style: UIAlertActionStyle.Default, handler: { (actionSheet: UIAlertAction!) in self.followWithAccount(account) }))
+        }
+        
+        self.presentViewController(actionSheet, animated: true, completion: nil)
     }
     
     @IBAction func followTapped(button: UIButton) {
