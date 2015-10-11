@@ -37,11 +37,11 @@ class EndCreditsViewController: UIViewController {
     }
     
     @IBAction func starTapped(button: UIButton) {
-        
+        UIApplication.sharedApplication().openURL(NSURL(string: "https://github.com/yurijmi/Follow-or-Nah")!)
     }
     
     @IBAction func buyTapped(button: UIButton) {
-        
+        UIApplication.sharedApplication().openURL(NSURL(string: "https://www.udemy.com/ios-9-swift-2-xcode-7-make-an-app-programming-code-ios9-dev")!)
     }
     
 }
