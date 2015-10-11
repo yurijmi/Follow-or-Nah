@@ -157,11 +157,22 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func unfollowTapped(button: UIButton) {
-        presentToast("Success!", message: "\(self.twitterUsers.first!.name) has been successfully unfollowed!")
-        
-        self.twitterUsers.removeAtIndex(0)
-        
-        showTopUser()
+        self.twitterApi!.performQuery("friendships/destroy", parameters: ["user_id": String(self.twitterUsers.first!.userID)], requestMethod: SLRequestMethod.POST,
+            handler: { (data :NSData!, response :NSHTTPURLResponse!, error :NSError!) -> Void in
+                if error == nil {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.presentToast("Success!", message: "\(self.twitterUsers.first!.name) has been successfully unfollowed!")
+                        
+                        self.twitterUsers.removeAtIndex(0)
+                        
+                        self.showTopUser()
+                    }
+                } else {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.presentToast("Error!", message: "Something wrong happend while sending unfollow request.")
+                    }
+                }
+        })
     }
     
     @IBAction func followTapped(button: UIButton) {
