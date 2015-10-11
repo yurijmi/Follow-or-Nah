@@ -76,7 +76,7 @@ class MainViewController: UIViewController {
                     for var user in response {
                         user = user as! [String : AnyObject]
                         
-                        let twitterUser = TwitterUser(name: user["name"] as! String, userID: user["id"] as! Int, imageURL: user["profile_image_url_https"] as! String)
+                        let twitterUser = TwitterUser(name: user["name"] as! String, userID: user["id"] as! Int, imageURL: user["profile_image_url_https"] as! String, followers: 0, followsYou: false)
                         
                         self.twitterUsers.append(twitterUser)
                     }
