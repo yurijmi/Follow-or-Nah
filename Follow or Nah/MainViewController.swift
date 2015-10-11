@@ -93,6 +93,13 @@ class MainViewController: UIViewController {
         let user = self.twitterUsers.first!
         
         self.usernameLabel.text = user.name
+        self.followersLabel.text = "\(user.followers) followers"
+        
+        if user.followsYou {
+            self.followsYouLabel.text = "Follows you! Let's keep it that way."
+        } else {
+            self.followsYouLabel.text = "Not following you. What a jerk!"
+        }
         
         NSURLSession.sharedSession().dataTaskWithURL(user.imageURL) { (data: NSData?, res: NSURLResponse?, error: NSError?) -> Void in
             dispatch_async(dispatch_get_main_queue()) {
