@@ -19,6 +19,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var followsYouLabel : UILabel!
     
     var account    : ACAccount?
+    var accountID  : Int?
     var twitterApi : TwitterApi?
     var twitterUsers = [TwitterUser]()
 
@@ -27,16 +28,18 @@ class MainViewController: UIViewController {
         
         self.twitterApi = TwitterApi(account: self.account!)
         
-        getFollowersCount()
+        verifyCredentials()
         getFriends()
     }
     
-    func getFollowersCount() {
+    func verifyCredentials() {
         self.twitterApi!.performQuery("account/verify_credentials", parameters: ["include_entities": "false", "skip_status": "true", "include_email": "false"],
             handler: { (data :NSData!, response :NSHTTPURLResponse!, error :NSError!) -> Void in
             if error == nil {
                 do {
                     let response = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves) as! [String : AnyObject]
+                    
+                    self.accountID = response["id"] as? Int
                     
                     let friendCount = response["friends_count"] as! Int
                     
