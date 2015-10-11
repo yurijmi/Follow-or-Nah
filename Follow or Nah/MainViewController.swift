@@ -143,25 +143,12 @@ class MainViewController: UIViewController {
         }
     }
     
-    func presentToast(title: String, message: String, delay: Double = 1.0) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        
-        self.presentViewController(alert, animated: true, completion: nil)
-        
-        let delay = delay * Double(NSEC_PER_SEC)
-        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-        
-        dispatch_after(time, dispatch_get_main_queue()) {
-            alert.dismissViewControllerAnimated(true, completion: nil)
-        }
-    }
-    
     @IBAction func unfollowTapped(button: UIButton) {
         self.twitterApi!.performQuery("friendships/destroy", parameters: ["user_id": String(self.twitterUsers.first!.userID)], requestMethod: SLRequestMethod.POST,
             handler: { (data :NSData!, response :NSHTTPURLResponse!, error :NSError!) -> Void in
                 if error == nil {
                     dispatch_async(dispatch_get_main_queue()) {
-                        self.presentToast("Success!", message: "\(self.twitterUsers.first!.name) has been successfully unfollowed!")
+                        Utilities().presentToast("Success!", message: "\(self.twitterUsers.first!.name) has been successfully unfollowed!", viewController: self)
                         
                         self.twitterUsers.removeAtIndex(0)
                         
@@ -169,7 +156,7 @@ class MainViewController: UIViewController {
                     }
                 } else {
                     dispatch_async(dispatch_get_main_queue()) {
-                        self.presentToast("Error!", message: "Something wrong happend while sending unfollow request.")
+                        Utilities().presentToast("Error!", message: "Something wrong happend while sending unfollow request.", viewController: self)
                     }
                 }
         })
