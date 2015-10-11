@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Accounts
+import Social
 
 class EndCreditsViewController: UIViewController {
     
@@ -32,8 +34,31 @@ class EndCreditsViewController: UIViewController {
         return string.stringByReplacingOccurrencesOfString("Nick", withString: "Rick", options: NSStringCompareOptions.LiteralSearch, range: nil)
     }
     
+    func followWithAccount(account: ACAccount) {
+        print("Following @yurijmi with \(account)")
+    }
+    
+    func selectAccountAndFollow(accounts: [ACAccount]) {
+        print("Multiple accounts: \(accounts)")
+    }
+    
     @IBAction func followTapped(button: UIButton) {
+        let account = ACAccountStore()
+        let accountType = account.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierTwitter)
         
+        account.requestAccessToAccountsWithType(accountType, options: nil) { (granted: Bool, error: NSError!) -> Void in
+            if granted {
+                let allAccounts = account.accountsWithAccountType(accountType)
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    if allAccounts.count == 1 {
+                        self.followWithAccount(allAccounts.first as! ACAccount)
+                    } else {
+                        self.selectAccountAndFollow(allAccounts as! [ACAccount])
+                    }
+                }
+            }
+        }
     }
     
     @IBAction func starTapped(button: UIButton) {
