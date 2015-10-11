@@ -157,7 +157,11 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func unfollowTapped(button: UIButton) {
+        presentToast("Success!", message: "\(self.twitterUsers.first!.name) has been successfully unfollowed!")
         
+        self.twitterUsers.removeAtIndex(0)
+        
+        showTopUser()
     }
     
     @IBAction func followTapped(button: UIButton) {
