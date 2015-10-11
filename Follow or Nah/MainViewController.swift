@@ -20,6 +20,7 @@ class MainViewController: UIViewController {
     
     var account    : ACAccount?
     var twitterApi : TwitterApi?
+    var twitterUsers = [TwitterUser]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +47,60 @@ class MainViewController: UIViewController {
             }
         })
     }
+    
+    func getFriends() {
+        self.twitterApi!.performQuery("friends/ids", handler: { (data :NSData!, response :NSHTTPURLResponse!, error :NSError!) -> Void in
+            if error == nil {
+                do {
+                    let response = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves) as! [String : AnyObject]
+                    
+                    var theIDs = (response["ids"] as! [Int]).map { String($0) }
+                    
+                    if theIDs.count > 100 {
+                        theIDs.removeRange(100...theIDs.count)
+                    }
+                    
+                    self.getHydratedUsers(theIDs)
+                } catch {}
+            }
+        })
+    }
+    
+    func getHydratedUsers(twitterIds: [String]) {
+        self.twitterApi!.performQuery("users/lookup", parameters: ["user_id": twitterIds, "include_entities": "false"],
+            handler: { (data :NSData!, response :NSHTTPURLResponse!, error :NSError!) -> Void in
+            if error == nil {
+                do {
+                    let response = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves) as! [AnyObject]
+                    
+                    for var user in response {
+                        user = user as! [String : AnyObject]
+                        
+                        let twitterUser = TwitterUser(name: user["name"] as! String, userID: user["id"] as! Int, imageURL: user["profile_image_url_https"] as! String)
+                        
+                        self.twitterUsers.append(twitterUser)
+                    }
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.showTopUser()
+                    }
+                } catch {}
+            }
+        })
+    }
+    
+    func showTopUser() {
+        let user = self.twitterUsers.first!
+        
+        self.usernameLabel.text = user.name
+        
+        NSURLSession.sharedSession().dataTaskWithURL(user.imageURL) { (data: NSData?, res: NSURLResponse?, error: NSError?) -> Void in
+            dispatch_async(dispatch_get_main_queue()) {
+                let image = UIImage(data: data!)
+                
+                self.imageView.image = image
+            }
+        }.resume()
     }
     
     @IBAction func unfollowTapped(button: UIButton) {
