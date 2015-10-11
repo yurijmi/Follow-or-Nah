@@ -76,7 +76,7 @@ class MainViewController: UIViewController {
                     for var user in response {
                         user = user as! [String : AnyObject]
                         
-                        let twitterUser = TwitterUser(name: user["name"] as! String, userID: user["id"] as! Int, imageURL: user["profile_image_url_https"] as! String, followers: 0, followsYou: false)
+                        let twitterUser = TwitterUser(name: user["name"] as! String, userID: user["id"] as! Int, imageURL: user["profile_image_url_https"] as! String, followers: user["followers_count"] as! Int)
                         
                         self.twitterUsers.append(twitterUser)
                     }
@@ -94,12 +94,6 @@ class MainViewController: UIViewController {
         
         self.usernameLabel.text = user.name
         self.followersLabel.text = "\(user.followers) followers"
-        
-        if user.followsYou {
-            self.followsYouLabel.text = "Follows you! Let's keep it that way."
-        } else {
-            self.followsYouLabel.text = "Not following you. What a jerk!"
-        }
         
         NSURLSession.sharedSession().dataTaskWithURL(user.imageURL) { (data: NSData?, res: NSURLResponse?, error: NSError?) -> Void in
             dispatch_async(dispatch_get_main_queue()) {
