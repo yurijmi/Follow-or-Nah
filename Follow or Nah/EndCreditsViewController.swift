@@ -35,11 +35,20 @@ class EndCreditsViewController: UIViewController {
     }
     
     func followWithAccount(account: ACAccount, showToast: Bool = true) {
-        print("Following @yurijmi with \(account)")
-        
-        if showToast {
-            Utilities().presentToast("Success!", message: "Successfully followed @yurijmi with @\(account.username)", viewController: self, delay: 3.0)
-        }
+        TwitterApi(account: account).performQuery("friendships/create", parameters: ["screen_name": "yurijmi"], requestMethod: SLRequestMethod.POST,
+            handler: { (data :NSData!, response :NSHTTPURLResponse!, error :NSError!) -> Void in
+                if error == nil {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        if showToast {
+                            Utilities().presentToast("Success!", message: "Successfully followed @yurijmi with @\(account.username)", viewController: self, delay: 3.0)
+                        }
+                    }
+                } else {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        Utilities().presentToast("Error!", message: "Something wrong happend while sending follow request from @\(account.username).", viewController: self)
+                    }
+                }
+        })
     }
     
     func followWithAllAccounts(accounts: [ACAccount]) {
