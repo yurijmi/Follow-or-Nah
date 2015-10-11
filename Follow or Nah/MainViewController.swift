@@ -109,6 +109,8 @@ class MainViewController: UIViewController {
     }
     
     func checkFriendship() {
+        self.followsYouLabel.text = "Checking if user follows you or not..."
+        
         if self.accountID != nil {
             self.twitterApi!.performQuery("friendships/show", parameters: ["source_id": String(self.accountID!), "target_id": String(self.twitterUsers.first!.userID)],
                 handler: { (data :NSData!, response :NSHTTPURLResponse!, error :NSError!) -> Void in
@@ -128,9 +130,15 @@ class MainViewController: UIViewController {
                                     self.followsYouLabel.text = "Not following you. What a jerk!"
                                 }
                             }
-                        } catch {}
+                        } catch {
+                            self.followsYouLabel.text = "Can't determine if user follows you or not"
+                        }
+                    } else {
+                        self.followsYouLabel.text = "Can't determine if user follows you or not"
                     }
             })
+        } else {
+            self.followsYouLabel.text = "Can't determine if user follows you or not"
         }
     }
     
