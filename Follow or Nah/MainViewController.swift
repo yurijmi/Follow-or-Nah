@@ -67,7 +67,7 @@ class MainViewController: UIViewController {
     }
     
     func getHydratedUsers(twitterIds: [String]) {
-        self.twitterApi!.performQuery("users/lookup", parameters: ["user_id": twitterIds, "include_entities": "false"],
+        self.twitterApi!.performQuery("users/lookup", parameters: ["user_id": twitterIds, "include_entities": "false"], requestMethod: SLRequestMethod.POST,
             handler: { (data :NSData!, response :NSHTTPURLResponse!, error :NSError!) -> Void in
             if error == nil {
                 do {
