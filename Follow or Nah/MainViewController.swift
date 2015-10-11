@@ -85,7 +85,6 @@ class MainViewController: UIViewController {
                     }
                     
                     dispatch_async(dispatch_get_main_queue()) {
-                        self.checkFriendship()
                         self.showTopUser()
                     }
                 } catch {}
@@ -98,6 +97,8 @@ class MainViewController: UIViewController {
         
         self.usernameLabel.text = user.name
         self.followersLabel.text = "\(user.followers) followers"
+        
+        self.checkFriendship()
         
         NSURLSession.sharedSession().dataTaskWithURL(user.imageURL) { (data: NSData?, res: NSURLResponse?, error: NSError?) -> Void in
             dispatch_async(dispatch_get_main_queue()) {
@@ -147,7 +148,9 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func followTapped(button: UIButton) {
+        self.twitterUsers.removeAtIndex(0)
         
+        showTopUser()
     }
 
 }
