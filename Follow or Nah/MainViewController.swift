@@ -85,6 +85,7 @@ class MainViewController: UIViewController {
                     }
                     
                     dispatch_async(dispatch_get_main_queue()) {
+                        self.checkFriendship()
                         self.showTopUser()
                     }
                 } catch {}
@@ -105,6 +106,32 @@ class MainViewController: UIViewController {
                 self.imageView.image = image
             }
         }.resume()
+    }
+    
+    func checkFriendship() {
+        if self.accountID != nil {
+            self.twitterApi!.performQuery("friendships/show", parameters: ["source_id": String(self.accountID!), "target_id": String(self.twitterUsers.first!.userID)],
+                handler: { (data :NSData!, response :NSHTTPURLResponse!, error :NSError!) -> Void in
+                    if error == nil {
+                        do {
+                            let response = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves) as! [String : AnyObject!]
+                            
+                            let relationship = response["relationship"] as! [String : AnyObject!]
+                            let target       = relationship["target"]   as! [String : AnyObject!]
+                            
+                            let followingYou = Bool(target["following"] as! Int)
+                            
+                            dispatch_async(dispatch_get_main_queue()) {
+                                if followingYou {
+                                    self.followsYouLabel.text = "Follows you! Let's keep it that way."
+                                } else {
+                                    self.followsYouLabel.text = "Not following you. What a jerk!"
+                                }
+                            }
+                        } catch {}
+                    }
+            })
+        }
     }
     
     @IBAction func unfollowTapped(button: UIButton) {
