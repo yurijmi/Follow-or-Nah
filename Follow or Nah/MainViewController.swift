@@ -85,14 +85,18 @@ class MainViewController: UIViewController {
                     }
                     
                     dispatch_async(dispatch_get_main_queue()) {
-                        self.showNextUser()
+                        self.showNextUser(false)
                     }
                 } catch {}
             }
         })
     }
     
-    func showNextUser() {
+    func showNextUser(removeFromQueue: Bool = true) {
+        if removeFromQueue {
+            self.twitterUsers.removeAtIndex(0)
+        }
+        
         if self.twitterUsers.count > 0 {
             let user = self.twitterUsers.first!
             
@@ -152,11 +156,7 @@ class MainViewController: UIViewController {
             handler: { (data :NSData!, response :NSHTTPURLResponse!, error :NSError!) -> Void in
                 if error == nil {
                     dispatch_async(dispatch_get_main_queue()) {
-                        Utilities().presentToast("Success!", message: "\(self.twitterUsers.first!.name) has been successfully unfollowed!", viewController: self)
-                        
-                        self.twitterUsers.removeAtIndex(0)
-                        
-                        self.showNextUser()
+                        Utilities().presentToast("Success!", message: "\(self.twitterUsers.first!.name) has been successfully unfollowed!", viewController: self, completion: { self.showNextUser() })
                     }
                 } else {
                     dispatch_async(dispatch_get_main_queue()) {
@@ -167,8 +167,6 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func followTapped(button: UIButton) {
-        self.twitterUsers.removeAtIndex(0)
-        
         showNextUser()
     }
 

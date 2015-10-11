@@ -9,7 +9,7 @@
 import UIKit
 
 class Utilities {
-    func presentToast(title: String, message: String, viewController: UIViewController, delay: Double = 1.0) {
+    func presentToast(title: String, message: String, viewController: UIViewController, delay: Double = 1.0, completion: (() -> Void) = {}) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         
         viewController.presentViewController(alert, animated: true, completion: nil)
@@ -19,6 +19,7 @@ class Utilities {
         
         dispatch_after(time, dispatch_get_main_queue()) {
             alert.dismissViewControllerAnimated(true, completion: nil)
+            completion()
         }
     }
 }
