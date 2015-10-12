@@ -63,58 +63,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="Follow! or nah..." id="rIM-x6-SvI"/>
                     <connections>
-                        <segue destination="Ava-lV-riH" kind="presentation" identifier="selectAccountSegue" id="FlU-6f-FLK"/>
                         <segue destination="9Mj-WS-MqN" kind="show" identifier="mainViewSegue" id="jn9-Dd-MyR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1377" y="439"/>
-        </scene>
-        <!--Select Account View Controller-->
-        <scene sceneID="RMa-TP-pPt">
-            <objects>
-                <viewController id="Ava-lV-riH" customClass="SelectAccountViewController" customModule="Follow_or_Nah" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="KKJ-7v-xhs"/>
-                        <viewControllerLayoutGuide type="bottom" id="dHI-kF-qdT"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Uu1-9G-D8O">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TZV-3t-sqe">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="rzX-On-gO0"/>
-                                </constraints>
-                                <items>
-                                    <navigationItem title="Select your Twitter account" id="kNL-jl-hn2"/>
-                                </items>
-                            </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zDL-TE-VW6">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="zDL-TE-VW6" firstAttribute="top" secondItem="TZV-3t-sqe" secondAttribute="bottom" id="3xD-sJ-8lZ"/>
-                            <constraint firstItem="dHI-kF-qdT" firstAttribute="top" secondItem="zDL-TE-VW6" secondAttribute="bottom" id="NbS-bK-IwY"/>
-                            <constraint firstItem="TZV-3t-sqe" firstAttribute="top" secondItem="Uu1-9G-D8O" secondAttribute="top" id="OBr-3R-owx"/>
-                            <constraint firstAttribute="trailing" secondItem="zDL-TE-VW6" secondAttribute="trailing" id="ONT-r1-eJy"/>
-                            <constraint firstItem="zDL-TE-VW6" firstAttribute="leading" secondItem="Uu1-9G-D8O" secondAttribute="leading" id="Rc4-dQ-1Po"/>
-                            <constraint firstAttribute="trailing" secondItem="TZV-3t-sqe" secondAttribute="trailing" id="nxX-fm-fKb"/>
-                            <constraint firstItem="TZV-3t-sqe" firstAttribute="leading" secondItem="Uu1-9G-D8O" secondAttribute="leading" id="teg-c5-Bik"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="tableView" destination="zDL-TE-VW6" id="OMe-3W-0ni"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6gH-7d-ltP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1377" y="1177"/>
         </scene>
         <!--End Credits View Controller-->
         <scene sceneID="nb5-Sn-nuu">
