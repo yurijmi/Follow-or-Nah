@@ -25,6 +25,7 @@ class MainViewController: UIViewController {
     var accountID  : Int?
     var twitterApi : TwitterApi?
     
+    var friendCount  = 0
     var friendsIDs   = [String]()
     var twitterUsers = [TwitterUser]()
 
@@ -67,10 +68,10 @@ class MainViewController: UIViewController {
                     } else {
                         self.accountID = response["id"] as? Int
                         
-                        let friendCount = response["friends_count"] as! Int
+                        self.friendCount = response["friends_count"] as! Int
                         
                         dispatch_async(dispatch_get_main_queue()) {
-                            self.headingLabel!.text = "You follow \(friendCount) peeps and this dude"
+                            self.headingLabel!.text = "You follow \(self.friendCount) peeps and this dude"
                         }
                     }
                 } catch {}
@@ -269,11 +270,15 @@ class MainViewController: UIViewController {
         self.twitterApi!.performQuery("friendships/destroy", parameters: ["user_id": String(self.twitterUsers.first!.userID)], requestMethod: SLRequestMethod.POST,
             handler: { (data: NSData!, response: NSHTTPURLResponse!, error: NSError!) -> Void in
                 if error == nil {
+                    self.friendCount--
+                    
                     if self.friendsIDs.count > 0 {
                         self.friendsIDs.removeFirst()
                     }
                     
                     dispatch_async(dispatch_get_main_queue()) {
+                        self.headingLabel!.text = "You follow \(self.friendCount) peeps and this dude"
+                        
                         Utilities().presentToast("Success!", message: "\(self.twitterUsers.first!.name) has been successfully unfollowed!", viewController: self, completion: { self.showNextUser() })
                     }
                 } else {
