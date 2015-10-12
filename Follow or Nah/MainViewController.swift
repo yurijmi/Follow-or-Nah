@@ -61,14 +61,23 @@ class MainViewController: UIViewController {
                     
                     var theIDs = (response["ids"] as! [Int]).map { String($0) }
                     
-                    if theIDs.count > 100 {
-                        self.friendsIDs = theIDs
-                        self.friendsIDs.removeRange(0...99)
+                    if theIDs.count > 0 {
+                        if theIDs.count > 100 {
+                            self.friendsIDs = theIDs
+                            self.friendsIDs.removeRange(0...99)
+                            
+                            theIDs.removeRange(100...(theIDs.count - 1))
+                        }
                         
-                        theIDs.removeRange(100...(theIDs.count - 1))
+                        self.getHydratedUsers(theIDs)
+                    } else {
+                        dispatch_async(dispatch_get_main_queue()) {
+                            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("EndCreditsViewController") as! EndCreditsViewController
+                                vc.noFriends = true
+                            
+                            self.presentViewController(vc, animated: true, completion: nil)
+                        }
                     }
-                    
-                    self.getHydratedUsers(theIDs)
                 } catch {}
             }
         })

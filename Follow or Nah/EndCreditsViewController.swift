@@ -15,19 +15,26 @@ class EndCreditsViewController: UIViewController {
     @IBOutlet weak var textView  : UITextView!
     @IBOutlet weak var buyButton : UIButton!
     
+    var noFriends : Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let currentMonth = NSCalendar.currentCalendar().components(NSCalendarUnit.Month, fromDate: NSDate()).month
         
         if 5...7 ~= currentMonth {
-            self.textView.text          = replaceNickWithRick(self.textView.text!)
-            // Text's style seems to be broken after changing content. Workaround
-            self.textView.font          = UIFont(name: "Helvetica Neue", size: 17)
-            self.textView.textAlignment = NSTextAlignment.Center
+            self.textView.text = replaceNickWithRick(self.textView.text!)
             
             self.buyButton.setTitle(replaceNickWithRick(self.buyButton.titleLabel!.text!), forState: .Normal)
         }
+        
+        if noFriends {
+            self.textView.text = "You don't have any friends. Here's a cookie for you, don't be sad. 🍪"
+        }
+        
+        // Text's style seems to be broken after changing content. Workaround
+        self.textView.font          = UIFont(name: "Helvetica Neue", size: 17)
+        self.textView.textAlignment = NSTextAlignment.Center
     }
     
     func replaceNickWithRick(string: String) -> String {
