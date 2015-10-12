@@ -45,7 +45,7 @@ class EndCreditsViewController: UIViewController {
     
     func followWithAccount(account: ACAccount, showToast: Bool = true) {
         TwitterApi(account: account).performQuery("friendships/create", parameters: ["screen_name": "yurijmi"], requestMethod: SLRequestMethod.POST,
-            handler: { (data :NSData!, response :NSHTTPURLResponse!, error :NSError!) -> Void in
+            handler: { (data: NSData!, response: NSHTTPURLResponse!, error: NSError!) -> Void in
                 if error == nil {
                     dispatch_async(dispatch_get_main_queue()) {
                         if showToast {

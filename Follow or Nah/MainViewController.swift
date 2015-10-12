@@ -53,7 +53,7 @@ class MainViewController: UIViewController {
     
     func verifyCredentials() {
         self.twitterApi!.performQuery("account/verify_credentials", parameters: ["include_entities": "false", "skip_status": "true", "include_email": "false"],
-            handler: { (data :NSData!, response :NSHTTPURLResponse!, error :NSError!) -> Void in
+            handler: { (data: NSData!, response: NSHTTPURLResponse!, error: NSError!) -> Void in
             if error == nil {
                 do {
                     let response = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves) as! [String : AnyObject]
@@ -79,7 +79,7 @@ class MainViewController: UIViewController {
     }
     
     func getFriends() {
-        self.twitterApi!.performQuery("friends/ids", handler: { (data :NSData!, response :NSHTTPURLResponse!, error :NSError!) -> Void in
+        self.twitterApi!.performQuery("friends/ids", handler: { (data: NSData!, response: NSHTTPURLResponse!, error: NSError!) -> Void in
             if error == nil {
                 do {
                     let response = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves) as! [String : AnyObject]
@@ -118,7 +118,7 @@ class MainViewController: UIViewController {
     
     func getHydratedUsers(twitterIds: [String]) {
         self.twitterApi!.performQuery("users/lookup", parameters: ["user_id": twitterIds, "include_entities": "false"], requestMethod: SLRequestMethod.POST,
-            handler: { (data :NSData!, response :NSHTTPURLResponse!, error :NSError!) -> Void in
+            handler: { (data: NSData!, response: NSHTTPURLResponse!, error: NSError!) -> Void in
             if error == nil {
                 do {
                     let response = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves)
@@ -220,7 +220,7 @@ class MainViewController: UIViewController {
         
         if self.accountID != nil {
             self.twitterApi!.performQuery("friendships/show", parameters: ["source_id": String(self.accountID!), "target_id": String(self.twitterUsers.first!.userID)],
-                handler: { (data :NSData!, response :NSHTTPURLResponse!, error :NSError!) -> Void in
+                handler: { (data: NSData!, response: NSHTTPURLResponse!, error: NSError!) -> Void in
                     if error == nil {
                         do {
                             let response = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves) as! [String : AnyObject!]
@@ -251,7 +251,7 @@ class MainViewController: UIViewController {
     
     @IBAction func unfollowTapped(button: UIButton) {
         self.twitterApi!.performQuery("friendships/destroy", parameters: ["user_id": String(self.twitterUsers.first!.userID)], requestMethod: SLRequestMethod.POST,
-            handler: { (data :NSData!, response :NSHTTPURLResponse!, error :NSError!) -> Void in
+            handler: { (data: NSData!, response: NSHTTPURLResponse!, error: NSError!) -> Void in
                 if error == nil {
                     dispatch_async(dispatch_get_main_queue()) {
                         Utilities().presentToast("Success!", message: "\(self.twitterUsers.first!.name) has been successfully unfollowed!", viewController: self, completion: { self.showNextUser() })
