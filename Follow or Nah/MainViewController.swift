@@ -24,6 +24,7 @@ class MainViewController: UIViewController {
     var account    : ACAccount?
     var accountID  : Int?
     var twitterApi : TwitterApi?
+    var imageTask  : NSURLSessionDataTask?
     
     var friendCount  = 0
     var friendsIDs   = [String]()
@@ -179,31 +180,46 @@ class MainViewController: UIViewController {
             
             self.checkFriendship()
             
-            NSURLSession.sharedSession().dataTaskWithURL(user.imageURL) { (data: NSData?, res: NSURLResponse?, error: NSError?) -> Void in
-                dispatch_async(dispatch_get_main_queue()) {
-                    let image = UIImage(data: data!)
-                    
-                    if self.headingLabel.alpha == 0.0 {
-                        self.imageView.image = image
+            if self.imageTask != nil {
+                self.imageTask!.cancel()
+            }
+            
+            self.imageTask = NSURLSession.sharedSession().dataTaskWithURL(user.imageURL) { (data: NSData?, res: NSURLResponse?, error: NSError?) -> Void in
+                if error == nil {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        let image = UIImage(data: data!)
                         
-                        // Fade in all stuff and stop animating the indicator
-                        UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-                            self.headingLabel.alpha    = 1.0
-                            self.usernameLabel.alpha   = 1.0
-                            self.imageView.alpha       = 1.0
-                            self.followersLabel.alpha  = 1.0
-                            self.followsYouLabel.alpha = 1.0
-                            self.unfollowButton.alpha  = 1.0
-                            self.followButton.alpha    = 1.0
-                        }, completion: nil)
+                        if self.headingLabel.alpha == 0.0 {
+                            self.imageView.image = image
+                            
+                            // Fade in all stuff and stop animating the indicator
+                            UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+                                self.headingLabel.alpha    = 1.0
+                                self.usernameLabel.alpha   = 1.0
+                                self.imageView.alpha       = 1.0
+                                self.followersLabel.alpha  = 1.0
+                                self.followsYouLabel.alpha = 1.0
+                                self.unfollowButton.alpha  = 1.0
+                                self.followButton.alpha    = 1.0
+                                }, completion: nil)
+                            
+                            self.actInd!.stopAnimating()
+                        } else {
+                            // Fade in the image view
+                            Utilities().updateImageViewAnimated(self.imageView, newImage: image!)
+                        }
                         
-                        self.actInd!.stopAnimating()
-                    } else {
-                        // Fade in the image view
-                        Utilities().updateImageViewAnimated(self.imageView, newImage: image!)
+                        // Downloading bigger image
+                        self.imageTask = NSURLSession.sharedSession().dataTaskWithURL(user.bigImageURL) { (data: NSData?, res: NSURLResponse?, error: NSError?) -> Void in
+                            dispatch_async(dispatch_get_main_queue()) {
+                                self.imageView.image = UIImage(data: data!)
+                            }
+                        }
+                        self.imageTask!.resume()
                     }
                 }
-            }.resume()
+            }
+            self.imageTask!.resume()
         } else {
             if self.friendsIDs.count > 0 {
                 var theIDs = self.friendsIDs
