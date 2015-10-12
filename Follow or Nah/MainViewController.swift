@@ -42,9 +42,11 @@ class MainViewController: UIViewController {
                     let response = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves) as! [String : AnyObject]
                     
                     if response["errors"] != nil {
-                        Utilities().presentToast("Error!", message: "Twitter responded with error while requesting info about your profile. Please, try again and if the problem persists try again in 15 minutes.", viewController: self, delay: 5.0)
-                        
-                        // TODO: go to welcome screen
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.navigationController!.popToRootViewControllerAnimated(true)
+                            
+                            Utilities().presentToast("Error!", message: "Twitter responded with error while requesting info about your profile. Please, try again and if the problem persists try again in 15 minutes.", viewController: self.view.window!.rootViewController!, delay: 5.0)
+                        }
                     } else {
                         self.accountID = response["id"] as? Int
                         
@@ -66,9 +68,11 @@ class MainViewController: UIViewController {
                     let response = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves) as! [String : AnyObject]
                     
                     if response["errors"] != nil {
-                        Utilities().presentToast("Error!", message: "Twitter responded with error while requesting info about peeps you follow. Please, try again and if the problem persists try again in 15 minutes.", viewController: self, delay: 5.0)
-                        
-                        // TODO: go to welcome screen
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.navigationController!.popToRootViewControllerAnimated(true)
+                            
+                            Utilities().presentToast("Error!", message: "Twitter responded with error while requesting info about peeps you follow. Please, try again and if the problem persists try again in 15 minutes.", viewController: self.view.window!.rootViewController!, delay: 5.0)
+                        }
                     } else {
                         var theIDs = (response["ids"] as! [Int]).map { String($0) }
                         
@@ -84,7 +88,7 @@ class MainViewController: UIViewController {
                         } else {
                             dispatch_async(dispatch_get_main_queue()) {
                                 let vc = self.storyboard?.instantiateViewControllerWithIdentifier("EndCreditsViewController") as! EndCreditsViewController
-                                vc.noFriends = true
+                                    vc.noFriends = true
                                 
                                 self.presentViewController(vc, animated: true, completion: nil)
                             }
@@ -103,9 +107,11 @@ class MainViewController: UIViewController {
                     let response = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves)
                     
                     if response as? [String : AnyObject] != nil {
-                        Utilities().presentToast("Error!", message: "Twitter responded with error while requesting info about peeps you follow. Please, try again and if the problem persists try again in 15 minutes.", viewController: self, delay: 5.0)
-                        
-                        // TODO: go to welcome screen
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.navigationController!.popToRootViewControllerAnimated(true)
+                            
+                            Utilities().presentToast("Error!", message: "Twitter responded with error while requesting info about peeps you follow. Please, try again and if the problem persists try again in 15 minutes.", viewController: self.view.window!.rootViewController!, delay: 5.0)
+                        }
                     } else {
                         let responseArr = response as! [AnyObject]
                         
