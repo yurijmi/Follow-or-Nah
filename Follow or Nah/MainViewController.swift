@@ -21,6 +21,8 @@ class MainViewController: UIViewController {
     var account    : ACAccount?
     var accountID  : Int?
     var twitterApi : TwitterApi?
+    
+    var friendsIDs   = [String]()
     var twitterUsers = [TwitterUser]()
 
     override func viewDidLoad() {
@@ -60,6 +62,9 @@ class MainViewController: UIViewController {
                     var theIDs = (response["ids"] as! [Int]).map { String($0) }
                     
                     if theIDs.count > 100 {
+                        self.friendsIDs = theIDs
+                        self.friendsIDs.removeRange(0...99)
+                        
                         theIDs.removeRange(100...(theIDs.count - 1))
                     }
                     
@@ -113,8 +118,18 @@ class MainViewController: UIViewController {
                 }
                 }.resume()
         } else {
-            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("EndCreditsViewController") as! EndCreditsViewController
-            self.presentViewController(vc, animated: true, completion: nil)
+            if self.friendsIDs.count > 0 {
+                var theIDs = self.friendsIDs
+                
+                if self.friendsIDs.count > 100 {
+                    theIDs.removeRange(100...(theIDs.count - 1))
+                }
+                
+                getHydratedUsers(theIDs)
+            } else {
+                let vc = self.storyboard?.instantiateViewControllerWithIdentifier("EndCreditsViewController") as! EndCreditsViewController
+                self.presentViewController(vc, animated: true, completion: nil)
+            }
         }
     }
     
