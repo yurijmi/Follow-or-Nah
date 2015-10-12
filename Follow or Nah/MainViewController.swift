@@ -157,8 +157,18 @@ class MainViewController: UIViewController {
         if self.twitterUsers.count > 0 {
             let user = self.twitterUsers.first!
             
-            self.usernameLabel.text = user.name
-            self.followersLabel.text = "\(user.followers) followers"
+            UIView.animateWithDuration(0.25, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+                self.usernameLabel.alpha  = 0.0
+                self.followersLabel.alpha = 0.0
+            }, completion: { (finished: Bool) -> Void in
+                self.usernameLabel.text = user.name
+                self.followersLabel.text = "\(user.followers) followers"
+                
+                UIView.animateWithDuration(0.25, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+                    self.usernameLabel.alpha  = 1.0
+                    self.followersLabel.alpha = 1.0
+                }, completion: nil)
+            })
             
             self.checkFriendship()
             
@@ -166,10 +176,10 @@ class MainViewController: UIViewController {
                 dispatch_async(dispatch_get_main_queue()) {
                     let image = UIImage(data: data!)
                     
-                    self.imageView.image = image
-                    
-                    // Show all stuff and stop animating the indicator if showing the first user
                     if self.headingLabel.alpha == 0.0 {
+                        self.imageView.image = image
+                        
+                        // Fade in all stuff and stop animating the indicator
                         UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
                             self.headingLabel.alpha    = 1.0
                             self.usernameLabel.alpha   = 1.0
@@ -181,6 +191,9 @@ class MainViewController: UIViewController {
                         }, completion: nil)
                         
                         self.actInd!.stopAnimating()
+                    } else {
+                        // Fade in the image view
+                        Utilities().updateImageViewAnimated(self.imageView, newImage: image!)
                     }
                 }
             }.resume()
