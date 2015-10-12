@@ -65,23 +65,29 @@ class MainViewController: UIViewController {
                 do {
                     let response = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves) as! [String : AnyObject]
                     
-                    var theIDs = (response["ids"] as! [Int]).map { String($0) }
-                    
-                    if theIDs.count > 0 {
-                        if theIDs.count > 100 {
-                            self.friendsIDs = theIDs
-                            self.friendsIDs.removeRange(0...99)
-                            
-                            theIDs.removeRange(100...(theIDs.count - 1))
-                        }
+                    if response["errors"] != nil {
+                        Utilities().presentToast("Error!", message: "Twitter responded with error while requesting info about peeps you follow. Please, try again and if the problem persists try again in 15 minutes.", viewController: self, delay: 5.0)
                         
-                        self.getHydratedUsers(theIDs)
+                        // TODO: go to welcome screen
                     } else {
-                        dispatch_async(dispatch_get_main_queue()) {
-                            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("EndCreditsViewController") as! EndCreditsViewController
-                                vc.noFriends = true
+                        var theIDs = (response["ids"] as! [Int]).map { String($0) }
+                        
+                        if theIDs.count > 0 {
+                            if theIDs.count > 100 {
+                                self.friendsIDs = theIDs
+                                self.friendsIDs.removeRange(0...99)
+                                
+                                theIDs.removeRange(100...(theIDs.count - 1))
+                            }
                             
-                            self.presentViewController(vc, animated: true, completion: nil)
+                            self.getHydratedUsers(theIDs)
+                        } else {
+                            dispatch_async(dispatch_get_main_queue()) {
+                                let vc = self.storyboard?.instantiateViewControllerWithIdentifier("EndCreditsViewController") as! EndCreditsViewController
+                                vc.noFriends = true
+                                
+                                self.presentViewController(vc, animated: true, completion: nil)
+                            }
                         }
                     }
                 } catch {}
