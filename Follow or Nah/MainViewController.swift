@@ -214,7 +214,9 @@ class MainViewController: UIViewController {
     }
     
     func checkFriendship() {
-        self.followsYouLabel.text = "Checking if user follows you or not..."
+        UIView.animateWithDuration(0.25, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { self.followsYouLabel.alpha = 0.0 }, completion: nil)
+        
+        var followsText = "Can't determine if user follows you or not"
         
         if self.accountID != nil {
             self.twitterApi!.performQuery("friendships/show", parameters: ["source_id": String(self.accountID!), "target_id": String(self.twitterUsers.first!.userID)],
@@ -223,37 +225,27 @@ class MainViewController: UIViewController {
                         do {
                             let response = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves) as! [String : AnyObject!]
                             
-                            if response["errors"] != nil {
-                                dispatch_async(dispatch_get_main_queue()) {
-                                    self.followsYouLabel.text = "Can't determine if user follows you or not"
-                                }
-                            } else {
+                            if response["errors"] == nil {
                                 let relationship = response["relationship"] as! [String : AnyObject!]
                                 let target       = relationship["target"]   as! [String : AnyObject!]
                                 
-                                let followingYou = Bool(target["following"] as! Int)
-                                
-                                dispatch_async(dispatch_get_main_queue()) {
-                                    if followingYou {
-                                        self.followsYouLabel.text = "Follows you! Let's keep it that way."
-                                    } else {
-                                        self.followsYouLabel.text = "Not following you. What a jerk!"
-                                    }
-                                }
+                                followsText = Bool(target["following"] as! Int) ? "Follows you! Let's keep it that way." : "Not following you. What a jerk!"
                             }
-                        } catch {
-                            dispatch_async(dispatch_get_main_queue()) {
-                                self.followsYouLabel.text = "Can't determine if user follows you or not"
-                            }
-                        }
-                    } else {
-                        dispatch_async(dispatch_get_main_queue()) {
-                            self.followsYouLabel.text = "Can't determine if user follows you or not"
-                        }
+                        } catch {}
+                    }
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        UIView.animateWithDuration(0.25, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+                            self.followsYouLabel.text  = followsText
+                            self.followsYouLabel.alpha = 1.0
+                        }, completion: nil)
                     }
             })
         } else {
-            self.followsYouLabel.text = "Can't determine if user follows you or not"
+            UIView.animateWithDuration(0.25, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+                self.followsYouLabel.text  = followsText
+                self.followsYouLabel.alpha = 1.0
+            }, completion: nil)
         }
     }
     
