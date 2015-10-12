@@ -17,6 +17,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var imageView       : UIImageView!
     @IBOutlet weak var followersLabel  : UILabel!
     @IBOutlet weak var followsYouLabel : UILabel!
+    @IBOutlet weak var unfollowButton  : UIButton!
+    @IBOutlet weak var followButton    : UIButton!
     
     var actInd     : UIActivityIndicatorView?
     var account    : ACAccount?
@@ -165,8 +167,23 @@ class MainViewController: UIViewController {
                     let image = UIImage(data: data!)
                     
                     self.imageView.image = image
+                    
+                    // Show all stuff and stop animating the indicator if showing the first user
+                    if self.headingLabel.alpha == 0.0 {
+                        UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+                            self.headingLabel.alpha    = 1.0
+                            self.usernameLabel.alpha   = 1.0
+                            self.imageView.alpha       = 1.0
+                            self.followersLabel.alpha  = 1.0
+                            self.followsYouLabel.alpha = 1.0
+                            self.unfollowButton.alpha  = 1.0
+                            self.followButton.alpha    = 1.0
+                        }, completion: nil)
+                        
+                        self.actInd!.stopAnimating()
+                    }
                 }
-                }.resume()
+            }.resume()
         } else {
             if self.friendsIDs.count > 0 {
                 var theIDs = self.friendsIDs
