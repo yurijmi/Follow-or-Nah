@@ -269,7 +269,9 @@ class MainViewController: UIViewController {
         self.twitterApi!.performQuery("friendships/destroy", parameters: ["user_id": String(self.twitterUsers.first!.userID)], requestMethod: SLRequestMethod.POST,
             handler: { (data: NSData!, response: NSHTTPURLResponse!, error: NSError!) -> Void in
                 if error == nil {
-                    self.friendsIDs.removeFirst()
+                    if self.friendsIDs.count > 0 {
+                        self.friendsIDs.removeFirst()
+                    }
                     
                     dispatch_async(dispatch_get_main_queue()) {
                         Utilities().presentToast("Success!", message: "\(self.twitterUsers.first!.name) has been successfully unfollowed!", viewController: self, completion: { self.showNextUser() })
