@@ -68,10 +68,6 @@ class WelcomeViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "selectAccountSegue" {
-            let selectAccountVC = segue.destinationViewController as! SelectAccountViewController
-                selectAccountVC.accounts = sender as! [ACAccount]
-        }
         if segue.identifier == "mainViewSegue" {
             let mainVC = segue.destinationViewController as! MainViewController
                 mainVC.account = (sender as! ACAccount)
