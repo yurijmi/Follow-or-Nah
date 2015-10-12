@@ -98,6 +98,8 @@ class MainViewController: UIViewController {
                     
                     if response as? [String : AnyObject] != nil {
                         Utilities().presentToast("Error!", message: "Twitter responded with error while requesting info about peeps you follow. Please, try again and if the problem persists try again in 15 minutes.", viewController: self, delay: 5.0)
+                        
+                        // TODO: go to welcome screen
                     } else {
                         let responseArr = response as! [AnyObject]
                         
