@@ -151,7 +151,7 @@ class MainViewController: UIViewController {
     
     func showNextUser(removeFromQueue: Bool = true) {
         if removeFromQueue {
-            self.twitterUsers.removeAtIndex(0)
+            self.twitterUsers.removeFirst()
         }
         
         if self.twitterUsers.count > 0 {
