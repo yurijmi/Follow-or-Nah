@@ -171,10 +171,14 @@ class MainViewController: UIViewController {
                                 }
                             }
                         } catch {
-                            self.followsYouLabel.text = "Can't determine if user follows you or not"
+                            dispatch_async(dispatch_get_main_queue()) {
+                                self.followsYouLabel.text = "Can't determine if user follows you or not"
+                            }
                         }
                     } else {
-                        self.followsYouLabel.text = "Can't determine if user follows you or not"
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.followsYouLabel.text = "Can't determine if user follows you or not"
+                        }
                     }
             })
         } else {
