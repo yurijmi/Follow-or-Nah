@@ -60,7 +60,7 @@ class MainViewController: UIViewController {
                     var theIDs = (response["ids"] as! [Int]).map { String($0) }
                     
                     if theIDs.count > 100 {
-                        theIDs.removeRange(100...theIDs.count)
+                        theIDs.removeRange(100...(theIDs.count - 1))
                     }
                     
                     self.getHydratedUsers(theIDs)
