@@ -208,6 +208,8 @@ class MainViewController: UIViewController {
                 var theIDs = self.friendsIDs
                 
                 if self.friendsIDs.count > 100 {
+                    self.friendsIDs.removeRange(0...99)
+                    
                     theIDs.removeRange(100...(theIDs.count - 1))
                 }
                 
@@ -267,6 +269,8 @@ class MainViewController: UIViewController {
         self.twitterApi!.performQuery("friendships/destroy", parameters: ["user_id": String(self.twitterUsers.first!.userID)], requestMethod: SLRequestMethod.POST,
             handler: { (data: NSData!, response: NSHTTPURLResponse!, error: NSError!) -> Void in
                 if error == nil {
+                    self.friendsIDs.removeFirst()
+                    
                     dispatch_async(dispatch_get_main_queue()) {
                         Utilities().presentToast("Success!", message: "\(self.twitterUsers.first!.name) has been successfully unfollowed!", viewController: self, completion: { self.showNextUser() })
                     }
