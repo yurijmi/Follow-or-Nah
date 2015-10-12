@@ -21,6 +21,6 @@ Build target: iOS 8.0, iPhone only, Landscape only
 Code was modified by me. Original code was made by Nick Walter.
 
 ### TODO:
-- [ ] Draft a final release
+- [x] Draft a final release
 - [ ] Create translations
   - [ ] Create Russian translation
