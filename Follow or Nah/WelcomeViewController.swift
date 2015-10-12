@@ -26,6 +26,18 @@ class WelcomeViewController: UIViewController {
         }
     }
     
+    func selectAccount(accounts: [ACAccount]) {
+        let actionSheet = UIAlertController(title: "Select your Twitter account", message: "You have multiple Twitter accounts connected to your iPhone. Please select account with which you want to use Follow or Nah.", preferredStyle: .ActionSheet)
+            actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
+        
+        for account in accounts {
+            actionSheet.addAction(UIAlertAction(title: "@\(account.username)", style: UIAlertActionStyle.Default, handler: { (actionSheet: UIAlertAction!) in self.useAccount(account) }))
+        }
+        
+        self.presentViewController(actionSheet, animated: true, completion: nil)
+    }
+
+    
     @IBAction func loginWithTwitter(button: AnyObject) {
         let account = ACAccountStore()
         let accountType = account.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierTwitter)
@@ -43,7 +55,7 @@ class WelcomeViewController: UIViewController {
                     self.useAccount(allAccounts.first as! ACAccount)
                 } else {
                     dispatch_async(dispatch_get_main_queue()) {
-                        self.performSegueWithIdentifier("selectAccountSegue", sender: allAccounts)
+                        self.selectAccount(allAccounts as! [ACAccount])
                     }
                 }
             } else {
