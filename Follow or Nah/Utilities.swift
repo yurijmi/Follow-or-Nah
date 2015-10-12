@@ -22,4 +22,18 @@ class Utilities {
             completion()
         }
     }
+    
+    func updateImageViewAnimated(imageView: UIImageView, newImage: UIImage, duration: NSTimeInterval = 0.5) {
+        CATransaction.begin()
+        
+        CATransaction.setAnimationDuration(duration)
+        
+        let transition = CATransition()
+        transition.type = kCATransitionFade
+        
+        imageView.layer.addAnimation(transition, forKey: kCATransition)
+        imageView.image = newImage
+        
+        CATransaction.commit()
+    }
 }
