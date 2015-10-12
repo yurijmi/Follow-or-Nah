@@ -18,6 +18,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var followersLabel  : UILabel!
     @IBOutlet weak var followsYouLabel : UILabel!
     
+    var actInd     : UIActivityIndicatorView?
     var account    : ACAccount?
     var accountID  : Int?
     var twitterApi : TwitterApi?
@@ -30,8 +31,22 @@ class MainViewController: UIViewController {
         
         self.twitterApi = TwitterApi(account: self.account!)
         
+        spawnActivityIndicator()
+        
         verifyCredentials()
         getFriends()
+    }
+    
+    func spawnActivityIndicator() {
+        self.actInd = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50)) as UIActivityIndicatorView
+        
+        self.actInd!.center                     = self.view.center
+        self.actInd!.hidesWhenStopped           = true
+        self.actInd!.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        
+        view.addSubview(self.actInd!)
+        
+        self.actInd!.startAnimating()
     }
     
     func verifyCredentials() {
