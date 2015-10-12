@@ -9,7 +9,7 @@
 import UIKit
 
 class Utilities {
-    func presentToast(title: String, message: String, viewController: UIViewController, delay: Double = 1.0, completion: (() -> Void) = {}) {
+    func presentToast(title: String, message: String, viewController: UIViewController, delay: NSTimeInterval = 1.0, completion: (() -> Void) = {}) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         
         viewController.presentViewController(alert, animated: true, completion: nil)
