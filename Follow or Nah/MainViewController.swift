@@ -158,16 +158,22 @@ class MainViewController: UIViewController {
                         do {
                             let response = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves) as! [String : AnyObject!]
                             
-                            let relationship = response["relationship"] as! [String : AnyObject!]
-                            let target       = relationship["target"]   as! [String : AnyObject!]
-                            
-                            let followingYou = Bool(target["following"] as! Int)
-                            
-                            dispatch_async(dispatch_get_main_queue()) {
-                                if followingYou {
-                                    self.followsYouLabel.text = "Follows you! Let's keep it that way."
-                                } else {
-                                    self.followsYouLabel.text = "Not following you. What a jerk!"
+                            if response["errors"] != nil {
+                                dispatch_async(dispatch_get_main_queue()) {
+                                    self.followsYouLabel.text = "Can't determine if user follows you or not"
+                                }
+                            } else {
+                                let relationship = response["relationship"] as! [String : AnyObject!]
+                                let target       = relationship["target"]   as! [String : AnyObject!]
+                                
+                                let followingYou = Bool(target["following"] as! Int)
+                                
+                                dispatch_async(dispatch_get_main_queue()) {
+                                    if followingYou {
+                                        self.followsYouLabel.text = "Follows you! Let's keep it that way."
+                                    } else {
+                                        self.followsYouLabel.text = "Not following you. What a jerk!"
+                                    }
                                 }
                             }
                         } catch {
