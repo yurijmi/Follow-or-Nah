@@ -88,18 +88,24 @@ class MainViewController: UIViewController {
             handler: { (data :NSData!, response :NSHTTPURLResponse!, error :NSError!) -> Void in
             if error == nil {
                 do {
-                    let response = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves) as! [AnyObject]
+                    let response = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves)
                     
-                    for var user in response {
-                        user = user as! [String : AnyObject]
+                    if response as? [String : AnyObject] != nil {
+                        Utilities().presentToast("Error!", message: "Twitter responded with error while requesting info about peeps you follow. Please, try again and if the problem persists try again in 15 minutes.", viewController: self, delay: 5.0)
+                    } else {
+                        let responseArr = response as! [AnyObject]
                         
-                        let twitterUser = TwitterUser(name: user["name"] as! String, userID: user["id"] as! Int, imageURL: user["profile_image_url_https"] as! String, followers: user["followers_count"] as! Int)
+                        for var user in responseArr {
+                            user = user as! [String : AnyObject]
+                            
+                            let twitterUser = TwitterUser(name: user["name"] as! String, userID: user["id"] as! Int, imageURL: user["profile_image_url_https"] as! String, followers: user["followers_count"] as! Int)
+                            
+                            self.twitterUsers.append(twitterUser)
+                        }
                         
-                        self.twitterUsers.append(twitterUser)
-                    }
-                    
-                    dispatch_async(dispatch_get_main_queue()) {
-                        self.showNextUser(false)
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.showNextUser(false)
+                        }
                     }
                 } catch {}
             }
