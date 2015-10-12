@@ -12,8 +12,9 @@ import Social
 
 class EndCreditsViewController: UIViewController {
     
-    @IBOutlet weak var textView  : UITextView!
-    @IBOutlet weak var buyButton : UIButton!
+    @IBOutlet weak var headingLabel : UILabel!
+    @IBOutlet weak var textView     : UITextView!
+    @IBOutlet weak var buyButton    : UIButton!
     
     var noFriends : Bool = false
     
@@ -29,6 +30,7 @@ class EndCreditsViewController: UIViewController {
         }
         
         if noFriends {
+            self.headingLabel.text = "Uh oh 😥"
             self.textView.text = "Looks like you don't follow anyone. This app isn't very useful for you.\nPlease, have a 🍪 and thanks for using it anyway! This app was made possible thanks to Nick's iOS 9 course. And some tweaking made by me 😊\nYou can follow me on Twitter if you liked it. And you can star this app's source code on GitHub."
         }
         

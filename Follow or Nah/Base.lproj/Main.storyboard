@@ -197,6 +197,7 @@
                     </view>
                     <connections>
                         <outlet property="buyButton" destination="cbG-gs-sx4" id="38f-L7-gCi"/>
+                        <outlet property="headingLabel" destination="alo-CM-LD8" id="FOL-nG-Dph"/>
                         <outlet property="textView" destination="xjT-Ld-ve0" id="9dg-dY-7Ax"/>
                     </connections>
                 </viewController>
