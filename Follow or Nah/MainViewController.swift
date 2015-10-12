@@ -41,12 +41,18 @@ class MainViewController: UIViewController {
                 do {
                     let response = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves) as! [String : AnyObject]
                     
-                    self.accountID = response["id"] as? Int
-                    
-                    let friendCount = response["friends_count"] as! Int
-                    
-                    dispatch_async(dispatch_get_main_queue()) {
-                        self.headingLabel!.text = "You follow \(friendCount) peeps and this dude"
+                    if response["errors"] != nil {
+                        Utilities().presentToast("Error!", message: "Twitter responded with error while requesting info about your profile. Please, try again and if the problem persists try again in 15 minutes.", viewController: self, delay: 5.0)
+                        
+                        // TODO: go to welcome screen
+                    } else {
+                        self.accountID = response["id"] as? Int
+                        
+                        let friendCount = response["friends_count"] as! Int
+                        
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.headingLabel!.text = "You follow \(friendCount) peeps and this dude"
+                        }
                     }
                 } catch {}
             }
