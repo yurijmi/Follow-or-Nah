@@ -15,7 +15,6 @@
 		503FBB721BC8EA1A0008AC94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 503FBB701BC8EA1A0008AC94 /* Main.storyboard */; };
 		503FBB741BC8EA1A0008AC94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503FBB731BC8EA1A0008AC94 /* Assets.xcassets */; };
 		503FBB771BC8EA1A0008AC94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 503FBB751BC8EA1A0008AC94 /* LaunchScreen.storyboard */; };
-		503FBB7F1BC906190008AC94 /* SelectAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503FBB7E1BC906190008AC94 /* SelectAccountViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		503FBB811BC9182A0008AC94 /* TwitterApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503FBB801BC9182A0008AC94 /* TwitterApi.swift */; settings = {ASSET_TAGS = (); }; };
 		503FBB831BC924300008AC94 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503FBB821BC924300008AC94 /* MainViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -31,7 +30,6 @@
 		503FBB731BC8EA1A0008AC94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		503FBB761BC8EA1A0008AC94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		503FBB781BC8EA1A0008AC94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		503FBB7E1BC906190008AC94 /* SelectAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectAccountViewController.swift; sourceTree = "<group>"; };
 		503FBB801BC9182A0008AC94 /* TwitterApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterApi.swift; sourceTree = "<group>"; };
 		503FBB821BC924300008AC94 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,7 +66,6 @@
 			children = (
 				503FBB6C1BC8EA1A0008AC94 /* AppDelegate.swift */,
 				503FBB6E1BC8EA1A0008AC94 /* WelcomeViewController.swift */,
-				503FBB7E1BC906190008AC94 /* SelectAccountViewController.swift */,
 				503FBB821BC924300008AC94 /* MainViewController.swift */,
 				50089A831BCAA6E7006D4281 /* EndCreditsViewController.swift */,
 				502D7A121BCAED9000BDA8F1 /* Utilities.swift */,
@@ -154,7 +151,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				503FBB811BC9182A0008AC94 /* TwitterApi.swift in Sources */,
-				503FBB7F1BC906190008AC94 /* SelectAccountViewController.swift in Sources */,
 				50089A821BCA52BB006D4281 /* TwitterUser.swift in Sources */,
 				503FBB6F1BC8EA1A0008AC94 /* WelcomeViewController.swift in Sources */,
 				503FBB6D1BC8EA1A0008AC94 /* AppDelegate.swift in Sources */,
