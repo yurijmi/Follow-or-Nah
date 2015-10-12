@@ -29,7 +29,7 @@ class EndCreditsViewController: UIViewController {
         }
         
         if noFriends {
-            self.textView.text = "You don't have any friends. Here's a cookie for you, don't be sad. 🍪"
+            self.textView.text = "Looks like you don't follow anyone. This app isn't very useful for you.\nPlease, have a 🍪 and thanks for using it anyway! This app was made possible thanks to Nick's iOS 9 course. And some tweaking made by me 😊\nYou can follow me on Twitter if you liked it. And you can star this app's source code on GitHub."
         }
         
         // Text's style seems to be broken after changing content. Workaround

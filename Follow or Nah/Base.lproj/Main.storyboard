@@ -136,7 +136,7 @@
                             </label>
                             <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xjT-Ld-ve0">
                                 <rect key="frame" x="20" y="70" width="560" height="118"/>
-                                <string key="text">Looks like there's no more peoople that you want to unfollow. Thanks for using this app! It was made possible thanks to Nick's iOS 9 course. And some tweaking made by me 😊 You can follow me on Twitter if you liked this app. And you can star this app's source code on GitHub.</string>
+                                <mutableString key="text">Looks like there's no more peoople that you want to unfollow. Thanks for using this app! It was made possible thanks to Nick's iOS 9 course. And some tweaking made by me 😊 You can follow me on Twitter if you liked this app. And you can star this app's source code on GitHub.</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
