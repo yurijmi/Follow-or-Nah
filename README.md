@@ -1,7 +1,7 @@
 # Follow or Nah
 12th app of [Nick's and Jenna's iOS 9 course](https://www.udemy.com/ios-9-swift-2-xcode-7-make-an-app-programming-code-ios9-dev/)
 
-Build target: iOS 8.0, iPhone only, Landscape only
+Build target: iOS 8.0, iPhone only, Portrait only
 
 ### Changes from course version of the app:
 * All possible crashes are fixed:
