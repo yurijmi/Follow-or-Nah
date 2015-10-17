@@ -27,3 +27,5 @@ ERROR_CHECK_FOLLOWING = "Can't determine if user follows you or not";
 SUCCESS = "Success!";
 SUCCESS_IMAGE_CACHE_DROPPED = "Image cache is cleared succesfully, I guess.";
 DONE = "Done!";
+FOLLOWS_YOU = "Follows you! Let's keep it that way.";
+NOT_FOLLOWING_YOU = "Not following you. What a jerk!";

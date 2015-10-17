@@ -277,7 +277,7 @@ class MainViewController: UIViewController {
                                 let relationship = response["relationship"] as! [String : AnyObject!]
                                 let target       = relationship["target"]   as! [String : AnyObject!]
                                 
-                                followsText = Bool(target["following"] as! Int) ? "Follows you! Let's keep it that way." : "Not following you. What a jerk!"
+                                followsText = Bool(target["following"] as! Int) ? NSLocalizedString("FOLLOWS_YOU", comment: "Follows you label's text") : NSLocalizedString("NOT_FOLLOWING_YOU", comment: "Follows you label's text")
                             }
                         } catch {}
                     }
