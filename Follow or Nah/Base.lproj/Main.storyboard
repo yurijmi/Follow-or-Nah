@@ -244,6 +244,13 @@
                             <constraint firstItem="lIw-9R-znA" firstAttribute="leading" secondItem="7da-xy-bFD" secondAttribute="leading" constant="10" id="zy7-F6-GYn"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="OEI-nu-4IP">
+                        <barButtonItem key="rightBarButtonItem" title="Drop image cache" id="StT-Q3-qFQ">
+                            <connections>
+                                <action selector="dropCacheTapped:" destination="9Mj-WS-MqN" id="mwK-VY-NyM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="followButton" destination="xMy-HF-aKc" id="Tzo-AU-7VC"/>
                         <outlet property="followersLabel" destination="m95-vc-dsp" id="aZu-6x-aBq"/>

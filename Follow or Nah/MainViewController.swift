@@ -315,5 +315,17 @@ class MainViewController: UIViewController {
     @IBAction func followTapped(button: UIButton) {
         showNextUser()
     }
+    
+    @IBAction func dropCacheTapped(button: UIBarButtonItem) {
+        let cache = KingfisherManager.sharedManager.cache
+        
+        // Clear memory cache
+        cache.clearMemoryCache()
+        
+        // Clear disk cache
+        cache.clearDiskCache()
+        
+        Utilities().presentToast("Done!", message: "Image cache is cleared succesfully, I guess.", viewController: self)
+    }
 
 }
