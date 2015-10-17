@@ -85,12 +85,12 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good Job!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="alo-CM-LD8">
                                 <rect key="frame" x="0.0" y="30" width="600" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xjT-Ld-ve0">
                                 <rect key="frame" x="20" y="70" width="560" height="118"/>
-                                <mutableString key="text">Looks like there's no more peoople that you want to unfollow. Thanks for using this app! It was made possible thanks to Nick's iOS 9 course. And some tweaking made by me 😊 You can follow me on Twitter if you liked this app. And you can star this app's source code on GitHub.</mutableString>
+                                <string key="text">Looks like there's no more peoople that you want to unfollow. Thanks for using this app! It was made possible thanks to Nick's iOS 9 course. And some tweaking made by me 😊 You can follow me on Twitter if you liked this app. And you can star this app's source code on GitHub.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
