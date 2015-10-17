@@ -73,7 +73,7 @@ class MainViewController: UIViewController {
                         self.friendCount = response["friends_count"] as! Int
                         
                         dispatch_async(dispatch_get_main_queue()) {
-                            self.headingLabel!.text = "You follow \(self.friendCount) peeps and this dude"
+                            self.headingLabel!.text = String.localizedStringWithFormat(NSLocalizedString("FOLLOWING_HEADING", comment: "Following heading with count"), self.friendCount)
                         }
                     }
                 } catch {}
@@ -163,14 +163,14 @@ class MainViewController: UIViewController {
             // Checking if displaying first user
             if self.headingLabel.alpha == 0.0 {
                 self.usernameLabel.text  = user.name
-                self.followersLabel.text = "\(user.followers) followers"
+                self.followersLabel.text = String.localizedStringWithFormat(NSLocalizedString("FOLLOWERS_COUNT", comment: "Followers count"), user.followers)
             } else {
                 UIView.animateWithDuration(0.25, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
                     self.usernameLabel.alpha  = 0.0
                     self.followersLabel.alpha = 0.0
                 }, completion: { (finished: Bool) -> Void in
                     self.usernameLabel.text  = user.name
-                    self.followersLabel.text = "\(user.followers) followers"
+                    self.followersLabel.text = String.localizedStringWithFormat(NSLocalizedString("FOLLOWERS_COUNT", comment: "Followers count"), user.followers)
                     
                     UIView.animateWithDuration(0.25, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
                         self.usernameLabel.alpha  = 1.0
@@ -316,9 +316,9 @@ class MainViewController: UIViewController {
                     }
                     
                     dispatch_async(dispatch_get_main_queue()) {
-                        self.headingLabel!.text = "You follow \(self.friendCount) peeps and this dude"
+                        self.headingLabel!.text = String.localizedStringWithFormat(NSLocalizedString("FOLLOWING_HEADING", comment: "Following heading with count"), self.friendCount)
                         
-                        Utilities().presentToast(NSLocalizedString("SUCCESS", comment: "Success with a !"), message: "\(self.twitterUsers.first!.name) has been successfully unfollowed!", viewController: self, completion: { self.showNextUser() })
+                        Utilities().presentToast(NSLocalizedString("SUCCESS", comment: "Success with a !"), message: String.localizedStringWithFormat(NSLocalizedString("SUCCESS_UNFOLLOW", comment: "Message about successfully unfollowing a user"), self.twitterUsers.first!.name), viewController: self, completion: { self.showNextUser() })
                     }
                 } else {
                     dispatch_async(dispatch_get_main_queue()) {
