@@ -1,0 +1,44 @@
+/* Class = "UIButton"; normalTitle = "Unfollow, BRUH"; ObjectID = "9Fv-8F-5Ag"; */
+"9Fv-8F-5Ag.normalTitle" = "Не читать";
+
+/* Class = "UILabel"; text = "Welcome to Follow or Nah!"; ObjectID = "N0X-AE-dR7"; */
+"N0X-AE-dR7.text" = "Добро пожаловать в Читать или Неа!";
+
+/* Class = "UIBarButtonItem"; title = "Drop image cache"; ObjectID = "StT-Q3-qFQ"; */
+"StT-Q3-qFQ.title" = "Очистить кэш изображений";
+
+/* Class = "UILabel"; text = "Good Job!"; ObjectID = "alo-CM-LD8"; */
+"alo-CM-LD8.text" = "Хорошая работа!";
+
+/* Class = "UIButton"; normalTitle = "Follow @yurijmi on Twitter"; ObjectID = "cKn-Rc-YU7"; */
+"cKn-Rc-YU7.normalTitle" = "Читать @yurijmi в Твиттере";
+
+/* Class = "UIButton"; normalTitle = "Buy Nick's iOS 9 course"; ObjectID = "cbG-gs-sx4"; */
+"cbG-gs-sx4.normalTitle" = "Купить курс Ника по iOS 9";
+
+/* Class = "UIButton"; normalTitle = "Login with Twitter, BRUH"; ObjectID = "fhH-bT-hrc"; */
+"fhH-bT-hrc.normalTitle" = "Войти, используя Твиттер";
+
+/* Class = "UILabel"; text = "You follow 0 peeps and this dude"; ObjectID = "lIw-9R-znA"; */
+"lIw-9R-znA.text" = "Ты читаешь 0 чувачков и этого типа";
+
+/* Class = "UILabel"; text = "0 followers"; ObjectID = "m95-vc-dsp"; */
+"m95-vc-dsp.text" = "0 читателей";
+
+/* Class = "UIButton"; normalTitle = "Go back to Welcome screen"; ObjectID = "rE1-QB-QEV"; */
+"rE1-QB-QEV.normalTitle" = "Вернуться на главный экран";
+
+/* Class = "UINavigationItem"; title = "Follow! or nah..."; ObjectID = "rIM-x6-SvI"; */
+"rIM-x6-SvI.title" = "Читать! или неа...";
+
+/* Class = "UILabel"; text = "Checking if user follows you or not..."; ObjectID = "spA-aK-Hv9"; */
+"spA-aK-Hv9.text" = "Проверяем, читает ли тебя этот пользователь...";
+
+/* Class = "UIButton"; normalTitle = "Star @yurijmi's repository on GitHub"; ObjectID = "wvt-3g-xKY"; */
+"wvt-3g-xKY.normalTitle" = "Репозиторий @yurijmi на GitHub";
+
+/* Class = "UILabel"; text = "@johndough"; ObjectID = "xJf-sw-T9I"; */
+"xJf-sw-T9I.text" = "@johndough";
+
+/* Class = "UIButton"; normalTitle = "Follow, BRUH"; ObjectID = "xMy-HF-aKc"; */
+"xMy-HF-aKc.normalTitle" = "Читать";

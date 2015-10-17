@@ -36,6 +36,7 @@
 		503FBB781BC8EA1A0008AC94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503FBB801BC9182A0008AC94 /* TwitterApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterApi.swift; sourceTree = "<group>"; };
 		503FBB821BC924300008AC94 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		50E022F51BD221E5006BB995 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +149,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 503FBB601BC8EA1A0008AC94;
 			productRefGroup = 503FBB6A1BC8EA1A0008AC94 /* Products */;
@@ -242,6 +244,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				503FBB711BC8EA1A0008AC94 /* Base */,
+				50E022F51BD221E5006BB995 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
