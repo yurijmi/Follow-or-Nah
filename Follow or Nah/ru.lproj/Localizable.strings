@@ -34,7 +34,6 @@ SUCCESS_FOLLOW_FROM_ALL = "Теперь ты читаешь @yurijmi со все
 DONE = "Готово!";
 FOLLOWS_YOU = "Читает тебя! Лучше так всё и оставить.";
 NOT_FOLLOWING_YOU = "Не читает тебя. Что за невежа!";
-FOLLOWING_HEADING = "Ты читаешь %d чувачков и этого типа";
 NICK = "Ник";
 RICK = "Рик";
 ALL_OF_THEM = "Со всех!";

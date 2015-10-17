@@ -2,6 +2,24 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
     <dict>
+        <key>FOLLOWING_HEADING</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@friends_count@</string>
+            <key>friends_count</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>lu</string>
+                <key>zero</key>
+                <string>You follow no one WTF?!?</string>
+                <key>one</key>
+                <string>You follow only this dude</string>
+                <key>other</key>
+                <string>You follow %d peeps and this dude</string>
+            </dict>
+        </dict>
         <key>FOLLOWERS_COUNT</key>
         <dict>
             <key>NSStringLocalizedFormatKey</key>
