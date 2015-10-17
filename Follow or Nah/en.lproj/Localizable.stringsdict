@@ -12,6 +12,8 @@
                 <string>NSStringPluralRuleType</string>
                 <key>NSStringFormatValueTypeKey</key>
                 <string>lu</string>
+                <key>zero</key>
+                <string>No followers</string>
                 <key>one</key>
                 <string>%lu follower</string>
                 <key>other</key>
