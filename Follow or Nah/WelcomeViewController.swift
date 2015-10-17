@@ -12,6 +12,14 @@ import Social
 
 class WelcomeViewController: UIViewController {
     
+    @IBOutlet weak var textView: UITextView!
+    
+    override func viewDidLoad() {
+        self.textView.text          = NSLocalizedString("WELCOME_TEXT_VIEW", comment: "TextView at Welcome screen")
+        self.textView.font          = UIFont(name: "Helvetica Neue", size: 15)
+        self.textView.textAlignment = NSTextAlignment.Center
+    }
+    
     func openAppSettings(alert: UIAlertAction!) {
         let settingsUrl = NSURL(string: UIApplicationOpenSettingsURLString)
         

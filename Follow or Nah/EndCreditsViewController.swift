@@ -30,8 +30,8 @@ class EndCreditsViewController: UIViewController {
         }
         
         if noFriends {
-            self.headingLabel.text = "Uh oh 😥"
-            self.textView.text = "Looks like you don't follow anyone. This app isn't very useful for you.\nPlease, have a 🍪 and thanks for using it anyway! This app was made possible thanks to Nick's iOS 9 course. And some tweaking made by me 😊\nYou can follow me on Twitter if you liked it. And you can star this app's source code on GitHub."
+            self.headingLabel.text = NSLocalizedString("END_CREDITS_NO_FRIENDS_LABEL", comment: "Label at End Credits screen if user don't follow anyone")
+            self.textView.text     = NSLocalizedString("END_CREDITS_NO_FRIENDS_TEXT_VIEW", comment: "TextView at End Credits screen if user don't follow anyone")
         }
         
         // Text's style seems to be broken after changing content. Workaround
