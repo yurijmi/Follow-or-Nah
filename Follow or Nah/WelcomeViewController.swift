@@ -35,8 +35,8 @@ class WelcomeViewController: UIViewController {
     }
     
     func selectAccount(accounts: [ACAccount]) {
-        let actionSheet = UIAlertController(title: "Select your Twitter account", message: "You have multiple Twitter accounts connected to your iPhone. Please select account with which you want to use Follow or Nah.", preferredStyle: .ActionSheet)
-            actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
+        let actionSheet = UIAlertController(title: NSLocalizedString("SELECT_TWITTER_ACCOUNT", comment: "Select Twitter account prompt's heading"), message: NSLocalizedString("SELECT_TWITTER_ACCOUNT_MESSAGE", comment: "Select Twitter account prompt's message"), preferredStyle: .ActionSheet)
+            actionSheet.addAction(UIAlertAction(title: NSLocalizedString("CANCEL", comment: "Cancel, literally"), style: UIAlertActionStyle.Cancel, handler: nil))
         
         for account in accounts {
             actionSheet.addAction(UIAlertAction(title: "@\(account.username)", style: UIAlertActionStyle.Default, handler: { (actionSheet: UIAlertAction!) in self.useAccount(account) }))
@@ -55,8 +55,8 @@ class WelcomeViewController: UIViewController {
                 let allAccounts = account.accountsWithAccountType(accountType)
                 
                 if allAccounts.count <= 0 {
-                    let alert = UIAlertController(title: "No Twitter accounts found", message: "It seems that you don't have any Twitter accounts connected to your iPhone. Go to Twitter Settings and add your account there.", preferredStyle: .Alert)
-                        alert.addAction(UIAlertAction(title: "Add account", style: UIAlertActionStyle.Default, handler: self.openAppSettings))
+                    let alert = UIAlertController(title: NSLocalizedString("NO_TWITTER_ACCOUNTS", comment: "No Twitter accounts prompt's heading"), message: NSLocalizedString("NO_TWITTER_ACCOUNTS_MESSAGE", comment: "No Twitter accounts prompt's message"), preferredStyle: .Alert)
+                        alert.addAction(UIAlertAction(title: NSLocalizedString("ADD_ACCOUNT", comment: "Add Account button"), style: UIAlertActionStyle.Default, handler: self.openAppSettings))
                     
                     self.presentViewController(alert, animated: true, completion: nil)
                 } else if allAccounts.count == 1 {
@@ -67,8 +67,8 @@ class WelcomeViewController: UIViewController {
                     }
                 }
             } else {
-                let alert = UIAlertController(title: "Access to Twitter is blocked", message: "It seems that you disabled access to Twitter. Go to Twitter Settings and enable access for \"Follow or Nah\".", preferredStyle: .Alert)
-                    alert.addAction(UIAlertAction(title: "Go to Settings", style: UIAlertActionStyle.Default, handler: self.openAppSettings))
+                let alert = UIAlertController(title: NSLocalizedString("TWITTER_ACCESS_BLOCKED", comment: "No access to Twitter prompt's heading"), message: NSLocalizedString("TWITTER_ACCESS_BLOCKED_MESSAGE", comment: "No access to Twitter prompt's message"), preferredStyle: .Alert)
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("GO_TO_SETTINGS", comment: "Go to Settings button"), style: UIAlertActionStyle.Default, handler: self.openAppSettings))
                 
                 self.presentViewController(alert, animated: true, completion: nil)
             }
