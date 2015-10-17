@@ -18,10 +18,13 @@
 * More appealing interface with animations;
 * Errors don't crash the app or printing stuff to console. The're displayed to user in UIAlertViews;
 * Code is more readable than Nick's in the course;
+* Image caching;
 * More information is shown about user. Such as:
   * Bigger profile picture;
-  * Followers count;
+  * Followers count with pluralization;
   * If he/she follows you or not.
+* Russian localization;
+* Pluralization of heading with friends count.
 
 Code was modified by me. Original code was made by Nick Walter.
 
