@@ -37,7 +37,7 @@ class EndCreditsViewController: UIViewController {
         }
         
         // Text's style seems to be broken after changing content. Workaround
-        self.textView.font          = UIFont(name: "Helvetica Neue", size: 17)
+        self.textView.font          = UIFont(name: "Helvetica Neue", size: 15)
         self.textView.textAlignment = NSTextAlignment.Center
     }
     

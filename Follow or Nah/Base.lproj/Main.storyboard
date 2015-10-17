@@ -9,7 +9,7 @@
         <!--Follow! or nah...-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="WelcomeViewController" customModule="Follow_or_Nah" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="WelcomeViewController" customModule="Follow_or_Nah" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -67,7 +67,7 @@
         <!--End Credits View Controller-->
         <scene sceneID="nb5-Sn-nuu">
             <objects>
-                <viewController storyboardIdentifier="EndCreditsViewController" id="OFP-2q-zwY" customClass="EndCreditsViewController" customModule="Follow_or_Nah" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EndCreditsViewController" automaticallyAdjustsScrollViewInsets="NO" id="OFP-2q-zwY" customClass="EndCreditsViewController" customModule="Follow_or_Nah" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xCb-ad-0RU"/>
                         <viewControllerLayoutGuide type="bottom" id="GhA-ky-f29"/>
@@ -77,19 +77,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good Job!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="alo-CM-LD8">
-                                <rect key="frame" x="0.0" y="30" width="600" height="30"/>
+                                <rect key="frame" x="0.0" y="25" width="600" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xjT-Ld-ve0">
-                                <rect key="frame" x="20" y="70" width="560" height="118"/>
+                                <rect key="frame" x="20" y="60" width="560" height="106"/>
                                 <string key="text">Looks like there's no more peoople that you want to unfollow. Thanks for using this app! It was made possible thanks to Nick's iOS 9 course. And some tweaking made by me 😊 You can follow me on Twitter if you liked this app. And you can star this app's source code on GitHub.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rE1-QB-QEV">
-                                <rect key="frame" x="20" y="198" width="560" height="36"/>
+                                <rect key="frame" x="20" y="171" width="560" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Go back to Welcome screen"/>
                                 <connections>
@@ -97,7 +97,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKn-Rc-YU7">
-                                <rect key="frame" x="20" y="244" width="560" height="36"/>
+                                <rect key="frame" x="20" y="212" width="560" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Follow @yurijmi on Twitter"/>
                                 <connections>
@@ -105,7 +105,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wvt-3g-xKY">
-                                <rect key="frame" x="20" y="290" width="560" height="33"/>
+                                <rect key="frame" x="20" y="253" width="560" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Star @yurijmi's repository on GitHub"/>
                                 <connections>
@@ -113,7 +113,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbG-gs-sx4">
-                                <rect key="frame" x="20" y="333" width="560" height="36"/>
+                                <rect key="frame" x="20" y="291" width="560" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Buy Nick's iOS 9 course"/>
                                 <connections>
@@ -124,21 +124,21 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="cbG-gs-sx4" firstAttribute="leading" secondItem="nmR-5Q-Spj" secondAttribute="leading" constant="20" id="0dm-jA-lG8"/>
-                            <constraint firstItem="cKn-Rc-YU7" firstAttribute="top" secondItem="rE1-QB-QEV" secondAttribute="bottom" constant="10" id="Pqm-0k-dvZ"/>
+                            <constraint firstItem="cKn-Rc-YU7" firstAttribute="top" secondItem="rE1-QB-QEV" secondAttribute="bottom" constant="5" id="Pqm-0k-dvZ"/>
                             <constraint firstAttribute="trailing" secondItem="rE1-QB-QEV" secondAttribute="trailing" constant="20" id="UbA-4w-dET"/>
-                            <constraint firstItem="alo-CM-LD8" firstAttribute="top" secondItem="xCb-ad-0RU" secondAttribute="bottom" constant="10" id="VdF-ZY-lMx"/>
+                            <constraint firstItem="alo-CM-LD8" firstAttribute="top" secondItem="xCb-ad-0RU" secondAttribute="bottom" constant="5" id="VdF-ZY-lMx"/>
                             <constraint firstItem="wvt-3g-xKY" firstAttribute="leading" secondItem="nmR-5Q-Spj" secondAttribute="leading" constant="20" id="YQ3-7H-vdk"/>
                             <constraint firstItem="rE1-QB-QEV" firstAttribute="leading" secondItem="nmR-5Q-Spj" secondAttribute="leading" constant="20" id="ZjQ-iw-xdp"/>
-                            <constraint firstItem="xjT-Ld-ve0" firstAttribute="top" secondItem="alo-CM-LD8" secondAttribute="bottom" constant="10" id="a3T-yD-84x"/>
+                            <constraint firstItem="xjT-Ld-ve0" firstAttribute="top" secondItem="alo-CM-LD8" secondAttribute="bottom" constant="5" id="a3T-yD-84x"/>
                             <constraint firstAttribute="trailing" secondItem="cKn-Rc-YU7" secondAttribute="trailing" constant="20" id="byi-V9-WTG"/>
                             <constraint firstAttribute="trailing" secondItem="xjT-Ld-ve0" secondAttribute="trailing" constant="20" id="c8u-bj-Yvw"/>
                             <constraint firstAttribute="trailing" secondItem="cbG-gs-sx4" secondAttribute="trailing" constant="20" id="ig0-Mb-DXJ"/>
-                            <constraint firstItem="rE1-QB-QEV" firstAttribute="top" secondItem="xjT-Ld-ve0" secondAttribute="bottom" constant="10" id="kVw-lT-Wm3"/>
+                            <constraint firstItem="rE1-QB-QEV" firstAttribute="top" secondItem="xjT-Ld-ve0" secondAttribute="bottom" constant="5" id="kVw-lT-Wm3"/>
                             <constraint firstItem="xjT-Ld-ve0" firstAttribute="leading" secondItem="nmR-5Q-Spj" secondAttribute="leading" constant="20" id="km7-VO-tM8"/>
                             <constraint firstItem="alo-CM-LD8" firstAttribute="leading" secondItem="nmR-5Q-Spj" secondAttribute="leading" id="ore-1N-zcu"/>
                             <constraint firstAttribute="trailing" secondItem="alo-CM-LD8" secondAttribute="trailing" id="qQS-Iy-rll"/>
-                            <constraint firstItem="cbG-gs-sx4" firstAttribute="top" secondItem="wvt-3g-xKY" secondAttribute="bottom" constant="10" id="qka-DV-0Gh"/>
-                            <constraint firstItem="wvt-3g-xKY" firstAttribute="top" secondItem="cKn-Rc-YU7" secondAttribute="bottom" constant="10" id="sEn-0s-27v"/>
+                            <constraint firstItem="cbG-gs-sx4" firstAttribute="top" secondItem="wvt-3g-xKY" secondAttribute="bottom" constant="5" id="qka-DV-0Gh"/>
+                            <constraint firstItem="wvt-3g-xKY" firstAttribute="top" secondItem="cKn-Rc-YU7" secondAttribute="bottom" constant="5" id="sEn-0s-27v"/>
                             <constraint firstItem="cKn-Rc-YU7" firstAttribute="leading" secondItem="nmR-5Q-Spj" secondAttribute="leading" constant="20" id="uYe-yT-7mC"/>
                             <constraint firstAttribute="trailing" secondItem="wvt-3g-xKY" secondAttribute="trailing" constant="20" id="xAp-Cz-71H"/>
                         </constraints>
@@ -156,7 +156,7 @@
         <!--Main View Controller-->
         <scene sceneID="0aT-HW-Aqg">
             <objects>
-                <viewController id="9Mj-WS-MqN" customClass="MainViewController" customModule="Follow_or_Nah" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="9Mj-WS-MqN" customClass="MainViewController" customModule="Follow_or_Nah" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Wt6-EP-gOF"/>
                         <viewControllerLayoutGuide type="bottom" id="KxK-rB-AOe"/>
