@@ -24,3 +24,11 @@ Code was modified by me. Original code was made by Nick Walter.
 - [x] Draft a final release
 - [ ] Create translations
   - [ ] Create Russian translation
+
+## Installation
+
+1. Clone the repo
+2. Run ```pod install```
+3. Open up Xcode using ```Follow or Nah.xcworkspace```
+4. ???
+5. Profit
