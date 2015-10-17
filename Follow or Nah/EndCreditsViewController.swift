@@ -51,12 +51,12 @@ class EndCreditsViewController: UIViewController {
                 if error == nil {
                     dispatch_async(dispatch_get_main_queue()) {
                         if showToast {
-                            Utilities().presentToast("Success!", message: "Successfully followed @yurijmi with @\(account.username)", viewController: self, delay: 3.0)
+                            Utilities().presentToast(NSLocalizedString("SUCCESS", comment: "Success with a !"), message: "Successfully followed @yurijmi with @\(account.username)", viewController: self, delay: 3.0)
                         }
                     }
                 } else {
                     dispatch_async(dispatch_get_main_queue()) {
-                        Utilities().presentToast("Error!", message: "Something wrong happend while sending follow request from @\(account.username).", viewController: self)
+                        Utilities().presentToast(NSLocalizedString("ERROR", comment: "Error with a !"), message: "Something wrong happend while sending follow request from @\(account.username).", viewController: self)
                     }
                 }
         })
@@ -67,13 +67,13 @@ class EndCreditsViewController: UIViewController {
             self.followWithAccount(account, showToast: false)
         }
         
-        Utilities().presentToast("Success!", message: "Successfully followed @yurijmi with all your Twitter accounts", viewController: self, delay: 3.0)
+        Utilities().presentToast(NSLocalizedString("SUCCESS", comment: "Success with a !"), message: NSLocalizedString("SUCCESS_FOLLOW_FROM_ALL", comment: "Message about success of following from all accounts"), viewController: self, delay: 3.0)
     }
     
     func selectAccountAndFollow(accounts: [ACAccount]) {
-        let actionSheet = UIAlertController(title: "Select Twitter account", message: "You have multiple Twitter accounts connected to your iPhone. Please select account with which you want to follow @yurijmi.", preferredStyle: .ActionSheet)
-            actionSheet.addAction(UIAlertAction(title: "All of them!", style: UIAlertActionStyle.Default, handler: { (actionSheet: UIAlertAction!) in self.followWithAllAccounts(accounts) }))
-            actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
+        let actionSheet = UIAlertController(title: NSLocalizedString("SELECT_TWITTER_ACCOUNT", comment: "Select Twitter account prompt's heading"), message: NSLocalizedString("SELECT_TWITTER_ACCOUNT_FOR_FOLLOWING_MESSAGE", comment: "Select Twitter account for following prompt's message"), preferredStyle: .ActionSheet)
+            actionSheet.addAction(UIAlertAction(title: NSLocalizedString("ALL_OF_THEM", comment: "All of them with a !"), style: UIAlertActionStyle.Default, handler: { (actionSheet: UIAlertAction!) in self.followWithAllAccounts(accounts) }))
+            actionSheet.addAction(UIAlertAction(title: NSLocalizedString("CANCEL", comment: "Cancel, literally"), style: UIAlertActionStyle.Cancel, handler: nil))
         
         for account in accounts {
             actionSheet.addAction(UIAlertAction(title: "@\(account.username)", style: UIAlertActionStyle.Default, handler: { (actionSheet: UIAlertAction!) in self.followWithAccount(account) }))
