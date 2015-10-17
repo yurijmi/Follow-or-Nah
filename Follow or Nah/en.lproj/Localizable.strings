@@ -32,3 +32,5 @@ FOLLOWS_YOU = "Follows you! Let's keep it that way.";
 NOT_FOLLOWING_YOU = "Not following you. What a jerk!";
 FOLLOWING_HEADING = "You follow %d peeps and this dude";
 FOLLOWERS_COUNT = "%d followers";
+NICK = "Nick";
+RICK = "Rick";

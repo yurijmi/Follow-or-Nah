@@ -32,3 +32,5 @@ FOLLOWS_YOU = "Читает тебя! Лучше так всё и оставит
 NOT_FOLLOWING_YOU = "Не читает тебя. Что за невежа!";
 FOLLOWING_HEADING = "Ты читаешь %d чувачков и этого типа";
 FOLLOWERS_COUNT = "%d читателей";
+NICK = "Ник";
+RICK = "Рик";

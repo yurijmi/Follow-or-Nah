@@ -21,6 +21,13 @@ class EndCreditsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if noFriends {
+            self.headingLabel.text = NSLocalizedString("END_CREDITS_NO_FRIENDS_LABEL", comment: "Label at End Credits screen if user don't follow anyone")
+            self.textView.text     = NSLocalizedString("END_CREDITS_NO_FRIENDS_TEXT_VIEW", comment: "TextView at End Credits screen if user don't follow anyone")
+        } else {
+            self.textView.text = NSLocalizedString("END_CREDITS_TEXT_VIEW", comment: "TextView at End Credits screen")
+        }
+        
         let currentMonth = NSCalendar.currentCalendar().components(NSCalendarUnit.Month, fromDate: NSDate()).month
         
         if 5...7 ~= currentMonth {
@@ -29,20 +36,13 @@ class EndCreditsViewController: UIViewController {
             self.buyButton.setTitle(replaceNickWithRick(self.buyButton.titleLabel!.text!), forState: .Normal)
         }
         
-        if noFriends {
-            self.headingLabel.text = NSLocalizedString("END_CREDITS_NO_FRIENDS_LABEL", comment: "Label at End Credits screen if user don't follow anyone")
-            self.textView.text     = NSLocalizedString("END_CREDITS_NO_FRIENDS_TEXT_VIEW", comment: "TextView at End Credits screen if user don't follow anyone")
-        } else {
-            self.textView.text = NSLocalizedString("END_CREDITS_TEXT_VIEW", comment: "TextView at End Credits screen")
-        }
-        
         // Text's style seems to be broken after changing content. Workaround
         self.textView.font          = UIFont(name: "Helvetica Neue", size: 17)
         self.textView.textAlignment = NSTextAlignment.Center
     }
     
     func replaceNickWithRick(string: String) -> String {
-        return string.stringByReplacingOccurrencesOfString("Nick", withString: "Rick", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        return string.stringByReplacingOccurrencesOfString(NSLocalizedString("NICK", comment: "Nick, literally"), withString: NSLocalizedString("RICK", comment: "Rick, literally"), options: NSStringCompareOptions.LiteralSearch, range: nil)
     }
     
     func followWithAccount(account: ACAccount, showToast: Bool = true) {
