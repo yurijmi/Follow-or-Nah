@@ -65,7 +65,7 @@ class MainViewController: UIViewController {
                         dispatch_async(dispatch_get_main_queue()) {
                             self.navigationController!.popToRootViewControllerAnimated(true)
                             
-                            Utilities().presentToast("Error!", message: "Twitter responded with error while requesting info about your profile. Please, try again and if the problem persists try again in 15 minutes.", viewController: self.view.window!.rootViewController!, delay: 5.0)
+                            Utilities().presentToast(NSLocalizedString("ERROR", comment: "Error with a !"), message: NSLocalizedString("ERROR_TWITTER_PROFILE", comment: "Message about error while getting profile information"), viewController: self.view.window!.rootViewController!, delay: 5.0)
                         }
                     } else {
                         self.accountID = response["id"] as? Int
@@ -91,7 +91,7 @@ class MainViewController: UIViewController {
                         dispatch_async(dispatch_get_main_queue()) {
                             self.navigationController!.popToRootViewControllerAnimated(true)
                             
-                            Utilities().presentToast("Error!", message: "Twitter responded with error while requesting info about peeps you follow. Please, try again and if the problem persists try again in 15 minutes.", viewController: self.view.window!.rootViewController!, delay: 5.0)
+                            Utilities().presentToast(NSLocalizedString("ERROR", comment: "Error with a !"), message: NSLocalizedString("ERROR_TWITTER_FRIENDS", comment: "Message about error while getting people you follow"), viewController: self.view.window!.rootViewController!, delay: 5.0)
                         }
                     } else {
                         var theIDs = (response["ids"] as! [Int]).map { String($0) }
@@ -130,7 +130,7 @@ class MainViewController: UIViewController {
                         dispatch_async(dispatch_get_main_queue()) {
                             self.navigationController!.popToRootViewControllerAnimated(true)
                             
-                            Utilities().presentToast("Error!", message: "Twitter responded with error while requesting info about peeps you follow. Please, try again and if the problem persists try again in 15 minutes.", viewController: self.view.window!.rootViewController!, delay: 5.0)
+                            Utilities().presentToast(NSLocalizedString("ERROR", comment: "Error with a !"), message: NSLocalizedString("ERROR_TWITTER_FRIENDS", comment: "Message about error while getting people you follow"), viewController: self.view.window!.rootViewController!, delay: 5.0)
                         }
                     } else {
                         let responseArr = response as! [AnyObject]
@@ -264,7 +264,7 @@ class MainViewController: UIViewController {
     func checkFriendship() {
         UIView.animateWithDuration(0.25, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { self.followsYouLabel.alpha = 0.0 }, completion: nil)
         
-        var followsText = "Can't determine if user follows you or not"
+        var followsText = NSLocalizedString("ERROR_CHECK_FOLLOWING", comment: "Can't determine if follows or not")
         
         if self.accountID != nil {
             self.twitterApi!.performQuery("friendships/show", parameters: ["source_id": String(self.accountID!), "target_id": String(self.twitterUsers.first!.userID)],
@@ -318,11 +318,11 @@ class MainViewController: UIViewController {
                     dispatch_async(dispatch_get_main_queue()) {
                         self.headingLabel!.text = "You follow \(self.friendCount) peeps and this dude"
                         
-                        Utilities().presentToast("Success!", message: "\(self.twitterUsers.first!.name) has been successfully unfollowed!", viewController: self, completion: { self.showNextUser() })
+                        Utilities().presentToast(NSLocalizedString("SUCCESS", comment: "Success with a !"), message: "\(self.twitterUsers.first!.name) has been successfully unfollowed!", viewController: self, completion: { self.showNextUser() })
                     }
                 } else {
                     dispatch_async(dispatch_get_main_queue()) {
-                        Utilities().presentToast("Error!", message: "Something wrong happend while sending unfollow request.", viewController: self)
+                        Utilities().presentToast(NSLocalizedString("ERROR", comment: "Error with a !"), message: NSLocalizedString("ERROR_TWITTER_UNFOLLOW", comment: "Message about error while unfollowing"), viewController: self)
                     }
                 }
         })
@@ -341,7 +341,7 @@ class MainViewController: UIViewController {
         // Clear disk cache
         cache.clearDiskCache()
         
-        Utilities().presentToast("Done!", message: "Image cache is cleared succesfully, I guess.", viewController: self)
+        Utilities().presentToast(NSLocalizedString("DONE", comment: "Done with a !"), message: NSLocalizedString("SUCCESS_IMAGE_CACHE_DROPPED", comment: "Message about successful cache drop"), viewController: self)
     }
 
 }
