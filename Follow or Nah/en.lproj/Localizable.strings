@@ -8,5 +8,5 @@
 
 WELCOME_TEXT_VIEW = "This is a small test app for Twitter APIs.\nHere you can connect your Twitter accounts and see who you follow! You can unfollow them or just ignore it. To begin using this app you need a Twitter account.\nIf you have one, press the big shinny button below!";
 END_CREDITS_TEXT_VIEW = "Looks like there's no more peoople that you want to unfollow.\nThanks for using this app! It was made possible thanks to Nick's iOS 9 course. And some tweaking made by me 😊\nYou can follow me on Twitter if you liked this app. And you can star this app's source code on GitHub.";
-END_CREDITS_NO_FRIENDS_LABEL = "Uh oh 😥"
+END_CREDITS_NO_FRIENDS_LABEL = "Uh oh 😥";
 END_CREDITS_NO_FRIENDS_TEXT_VIEW = "Looks like you don't follow anyone. This app isn't very useful for you.\nPlease, have a 🍪 and thanks for using it anyway! This app was made possible thanks to Nick's iOS 9 course. And some tweaking made by me 😊\nYou can follow me on Twitter if you liked it. And you can star this app's source code on GitHub.";
