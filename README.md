@@ -1,7 +1,12 @@
-# Follow or Nah
-12th app of [Nick's and Jenna's iOS 9 course](https://www.udemy.com/ios-9-swift-2-xcode-7-make-an-app-programming-code-ios9-dev/)
+<h1 align="center">Follow! or nah...</h1>
 
-Build target: iOS 8.0, iPhone only, Portrait only
+<p align="center">
+  <img src="/Follow or Nah/Assets.xcassets/AppIcon.appiconset/Icon-60@3x.png?raw=true" alt="Follow or Nah app icon">
+</p>
+
+<p align="center">12th app of <a href="https://www.udemy.com/ios-9-swift-2-xcode-7-make-an-app-programming-code-ios9-dev/">Nick's and Jenna's iOS 9 course</a></p>
+
+<p align="center">Build target: iOS 8.0, iPhone only, Portrait only</p>
 
 ### Changes from course version of the app:
 * All possible crashes are fixed:
