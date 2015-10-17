@@ -181,52 +181,68 @@ class MainViewController: UIViewController {
             
             self.checkFriendship()
             
-            if self.imageTask != nil {
-                self.imageTask!.cancel()
-            }
+            /***\ AVATAR STUFF UP NEXT \***/
             
-            self.imageTask = KingfisherManager.sharedManager.retrieveImageWithResource(Resource(downloadURL: user.imageURL),
-                optionsInfo: nil,
-                progressBlock: nil,
-                completionHandler: { (image: UIImage?, error: NSError?, cacheType: CacheType, imageURL: NSURL?) -> () in
-                    if error == nil {
-                        dispatch_async(dispatch_get_main_queue()) {
-                            if self.headingLabel.alpha == 0.0 {
-                                self.imageView.image = image
-                                
-                                // Fade in all stuff and stop animating the indicator
-                                UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-                                    self.headingLabel.alpha    = 1.0
-                                    self.usernameLabel.alpha   = 1.0
-                                    self.imageView.alpha       = 1.0
-                                    self.followersLabel.alpha  = 1.0
-                                    self.followsYouLabel.alpha = 1.0
-                                    self.unfollowButton.alpha  = 1.0
-                                    self.followButton.alpha    = 1.0
-                                    }, completion: nil)
-                                
-                                self.actInd!.stopAnimating()
-                            } else {
-                                // Fade in the image view
-                                Utilities().updateImageViewAnimated(self.imageView, newImage: image!)
-                            }
-                            
-                            // Downloading bigger image
-                            self.imageTask = KingfisherManager.sharedManager.retrieveImageWithResource(Resource(downloadURL: user.bigImageURL),
-                                optionsInfo: nil,
-                                progressBlock: nil,
-                                completionHandler: { (image: UIImage?, error: NSError?, cacheType: CacheType, imageURL: NSURL?) -> () in
-                                    if error == nil {
-                                        dispatch_async(dispatch_get_main_queue()) {
-                                            self.imageView.image = image
-                                        }
-                                    }
-                                }
-                            )
-                        }
+            // Function for displaying everything if first user or just fading in the image
+            func showOrFadeImage(image: UIImage) {
+                dispatch_async(dispatch_get_main_queue()) {
+                    if self.headingLabel.alpha == 0.0 {
+                        self.imageView.image = image
+                        
+                        // Fade in all stuff and stop animating the indicator
+                        UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+                            self.headingLabel.alpha    = 1.0
+                            self.usernameLabel.alpha   = 1.0
+                            self.imageView.alpha       = 1.0
+                            self.followersLabel.alpha  = 1.0
+                            self.followsYouLabel.alpha = 1.0
+                            self.unfollowButton.alpha  = 1.0
+                            self.followButton.alpha    = 1.0
+                        }, completion: nil)
+                        
+                        self.actInd!.stopAnimating()
+                    } else {
+                        // Fade in the image view
+                        Utilities().updateImageViewAnimated(self.imageView, newImage: image)
                     }
                 }
-            )
+            }
+            
+            func downloadSmallImageAndThenBigImage() {
+                if self.imageTask != nil {
+                    self.imageTask!.cancel()
+                }
+                
+                self.imageTask = KingfisherManager.sharedManager.retrieveImageWithResource(Resource(downloadURL: user.imageURL),
+                    optionsInfo: nil,
+                    progressBlock: nil,
+                    completionHandler: { (image: UIImage?, error: NSError?, cacheType: CacheType, imageURL: NSURL?) -> () in
+                        if error == nil {
+                            showOrFadeImage(image!)
+                            
+                            dispatch_async(dispatch_get_main_queue()) {
+                                // Downloading bigger image
+                                self.imageTask = KingfisherManager.sharedManager.retrieveImageWithResource(Resource(downloadURL: user.bigImageURL),
+                                    optionsInfo: nil,
+                                    progressBlock: nil,
+                                    completionHandler: { (image: UIImage?, error: NSError?, cacheType: CacheType, imageURL: NSURL?) -> () in
+                                        if error == nil {
+                                            dispatch_async(dispatch_get_main_queue()) {
+                                                self.imageView.image = image
+                                            }
+                                        }
+                                    }
+                                )
+                            }
+                        }
+                    }
+                )
+            }
+            
+            // Checking if we have big image in cache
+            KingfisherManager.sharedManager.cache.retrieveImageForKey(Resource(downloadURL: user.bigImageURL).cacheKey, options: KingfisherManager.DefaultOptions, completionHandler: { (image, cacheType) -> () in
+                image == nil ? downloadSmallImageAndThenBigImage() : showOrFadeImage(image!)
+            })
         } else {
             if self.friendsIDs.count > 0 {
                 var theIDs = self.friendsIDs
