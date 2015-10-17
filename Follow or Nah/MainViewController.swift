@@ -179,7 +179,9 @@ class MainViewController: UIViewController {
                 })
             }
             
-            self.checkFriendship()
+            if self.headingLabel.alpha == 1.0 {
+                self.checkFriendship()
+            }
             
             /***\ AVATAR STUFF UP NEXT \***/
             
@@ -195,12 +197,13 @@ class MainViewController: UIViewController {
                             self.usernameLabel.alpha   = 1.0
                             self.imageView.alpha       = 1.0
                             self.followersLabel.alpha  = 1.0
-                            self.followsYouLabel.alpha = 1.0
                             self.unfollowButton.alpha  = 1.0
                             self.followButton.alpha    = 1.0
                         }, completion: nil)
                         
                         self.actInd!.stopAnimating()
+                        
+                        self.checkFriendship()
                     } else {
                         // Fade in the image view
                         Utilities().updateImageViewAnimated(self.imageView, newImage: image)
@@ -285,23 +288,17 @@ class MainViewController: UIViewController {
                     dispatch_async(dispatch_get_main_queue()) {
                         self.followsYouLabel.text = followsText
                         
-                        // Checking if displaying first user
-                        if self.headingLabel.alpha != 0.0 {
-                            UIView.animateWithDuration(0.25, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+                        UIView.animateWithDuration(0.25, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
                                 self.followsYouLabel.alpha = 1.0
-                            }, completion: nil)
-                        }
+                        }, completion: nil)
                     }
             })
         } else {
             self.followsYouLabel.text = followsText
             
-            // Checking if displaying first user
-            if self.headingLabel.alpha != 0.0 {
-                UIView.animateWithDuration(0.25, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+            UIView.animateWithDuration(0.25, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
                     self.followsYouLabel.alpha = 1.0
-                }, completion: nil)
-            }
+            }, completion: nil)
         }
     }
     
