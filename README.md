@@ -25,11 +25,6 @@
 
 Code was modified by me. Original code was made by Nick Walter.
 
-### TODO:
-- [x] Draft a final release
-- [ ] Create translations
-  - [ ] Create Russian translation
-
 ## Installation
 
 1. Clone the repo
