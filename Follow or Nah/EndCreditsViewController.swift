@@ -51,12 +51,12 @@ class EndCreditsViewController: UIViewController {
                 if error == nil {
                     dispatch_async(dispatch_get_main_queue()) {
                         if showToast {
-                            Utilities().presentToast(NSLocalizedString("SUCCESS", comment: "Success with a !"), message: "Successfully followed @yurijmi with @\(account.username)", viewController: self, delay: 3.0)
+                            Utilities().presentToast(NSLocalizedString("SUCCESS", comment: "Success with a !"), message: String.localizedStringWithFormat(NSLocalizedString("SUCCESS_FOLLOW", comment: "Message about successfully following @yurijmi from account"), account.username), viewController: self, delay: 3.0)
                         }
                     }
                 } else {
                     dispatch_async(dispatch_get_main_queue()) {
-                        Utilities().presentToast(NSLocalizedString("ERROR", comment: "Error with a !"), message: "Something wrong happend while sending follow request from @\(account.username).", viewController: self)
+                        Utilities().presentToast(NSLocalizedString("ERROR", comment: "Error with a !"), message: String.localizedStringWithFormat(NSLocalizedString("ERROR_FOLLOW", comment: "Message about unsuccessfully following @yurijmi from account"), account.username), viewController: self)
                     }
                 }
         })
